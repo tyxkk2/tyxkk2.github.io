@@ -1,0 +1,46 @@
+baseURL = 'https://tyxkk2.github.io/'
+languageCode = 'zh-cn'
+title = 'Yuxuan Tang'
+theme = 'PaperMod'
+
+[pagination]
+  pagerSize = 10
+
+[params]
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+
+[params.profileMode]
+  enabled = true
+  title = "Yuxuan Tang"
+  subtitle = "Tsinghua CS undergraduate · CS · AI"
+  imageUrl = ""
+  imageTitle = "avatar"
+
+[[params.profileMode.buttons]]
+  name = "Blog"
+  url = "/posts"
+
+[[params.profileMode.buttons]]
+  name = "About"
+  url = "/about"
+
+[[menus.main]]
+  name = "Home"
+  url = "/"
+  weight = 10
+
+[[menus.main]]
+  name = "Blog"
+  url = "/posts/"
+  weight = 20
+
+[[menus.main]]
+  name = "About"
+  url = "/about/"
+  weight = 30
