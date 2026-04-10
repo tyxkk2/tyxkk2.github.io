@@ -19,8 +19,24 @@ theme = 'PaperMod'
   enabled = true
   title = "Yuxuan Tang"
   subtitle = "Tsinghua CS undergraduate · CS · AI"
-  imageUrl = ""
+  imageUrl = "images/avatar.jpg"
   imageTitle = "avatar"
+
+[[params.socialIcons]]
+  name = "github"
+  url = "https://github.com/tyxkk2"
+
+[[params.socialIcons]]
+  name = "email"
+  url = "mailto:tyxkk2@gmail.com"
+
+[[params.socialIcons]]
+  name = "x"
+  url = "https://x.com/tyxkk2"
+
+[[params.socialIcons]]
+  name = "bilibili"
+  url = "https://space.bilibili.com/163827523"
 
 [[params.profileMode.buttons]]
   name = "Blog"
