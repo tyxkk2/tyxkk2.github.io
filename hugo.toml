@@ -18,7 +18,7 @@ theme = 'PaperMod'
 [params.profileMode]
   enabled = true
   title = "Yuxuan Tang"
-  subtitle = "Tsinghua CS undergraduate · CS · AI"
+  subtitle = "Tsinghua CS undergraduate · CS · AI · Math"
   imageUrl = "images/avatar.jpg"
   imageTitle = "avatar"
 
@@ -39,12 +39,12 @@ theme = 'PaperMod'
   url = "https://space.bilibili.com/163827523"
 
 [[params.profileMode.buttons]]
-  name = "Blog"
-  url = "/posts"
-
-[[params.profileMode.buttons]]
   name = "About"
   url = "/about"
+
+[[params.profileMode.buttons]]
+  name = "Blog"
+  url = "/posts"
 
 [[menus.main]]
   name = "Home"
@@ -52,11 +52,12 @@ theme = 'PaperMod'
   weight = 10
 
 [[menus.main]]
-  name = "Blog"
-  url = "/posts/"
+  name = "About"
+  url = "/about/"
   weight = 20
 
 [[menus.main]]
-  name = "About"
-  url = "/about/"
+  name = "Blog"
+  url = "/posts/"
   weight = 30
+
