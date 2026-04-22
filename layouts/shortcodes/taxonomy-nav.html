@@ -1,0 +1,54 @@
+{{- $categories := site.Taxonomies.categories -}}
+{{- $tags := site.Taxonomies.tags -}}
+
+{{- if or $categories $tags -}}
+<div class="taxonomy-nav">
+  <div class="taxonomy-nav-grid">
+    {{- with $categories -}}
+    <section class="taxonomy-nav-card taxonomy-nav-card--categories">
+      <div class="taxonomy-nav-header">
+        <h2>
+          <span class="taxonomy-nav-dot" aria-hidden="true"></span>
+          Categories
+          <span class="taxonomy-nav-total">{{ len . }}</span>
+        </h2>
+        <a href="{{ "/categories/" | relURL }}">View all &rarr;</a>
+      </div>
+      <ul class="terms-tags taxonomy-nav-list taxonomy-nav-list--categories">
+        {{- range .Alphabetical -}}
+        <li>
+          <a href="{{ .Page.RelPermalink }}">
+            <span class="taxonomy-nav-label">{{ .Page.LinkTitle }}</span>
+            <span class="taxonomy-nav-count">{{ .Count }}</span>
+          </a>
+        </li>
+        {{- end -}}
+      </ul>
+    </section>
+    {{- end -}}
+
+    {{- with $tags -}}
+    <section class="taxonomy-nav-card taxonomy-nav-card--tags">
+      <div class="taxonomy-nav-header">
+        <h2>
+          <span class="taxonomy-nav-dot" aria-hidden="true"></span>
+          Tags
+          <span class="taxonomy-nav-total">{{ len . }}</span>
+        </h2>
+        <a href="{{ "/tags/" | relURL }}">View all &rarr;</a>
+      </div>
+      <ul class="terms-tags taxonomy-nav-list taxonomy-nav-list--tags">
+        {{- range .Alphabetical -}}
+        <li>
+          <a href="{{ .Page.RelPermalink }}">
+            <span class="taxonomy-nav-label">{{ .Page.LinkTitle }}</span>
+            <span class="taxonomy-nav-count">{{ .Count }}</span>
+          </a>
+        </li>
+        {{- end -}}
+      </ul>
+    </section>
+    {{- end -}}
+  </div>
+</div>
+{{- end -}}

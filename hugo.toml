@@ -3,6 +3,10 @@ languageCode = 'zh-cn'
 title = 'Yuxuan Tang'
 theme = 'PaperMod'
 
+[taxonomies]
+  tag = 'tags'
+  category = 'categories'
+
 [pagination]
   pagerSize = 10
 
@@ -60,4 +64,3 @@ theme = 'PaperMod'
   name = "Blog"
   url = "/posts/"
   weight = 30
-

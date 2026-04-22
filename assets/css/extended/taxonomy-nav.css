@@ -1,0 +1,299 @@
+/* ---------- Blog taxonomy nav (on /posts/) ---------- */
+
+.taxonomy-nav {
+  --tx-cat-accent: #2563eb;      /* blue for categories */
+  --tx-tag-accent: #0d9488;      /* teal for tags */
+  --tx-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --tx-shadow-md: 0 8px 24px rgba(15, 23, 42, 0.06);
+  margin: 2rem 0 2.75rem;
+}
+
+[data-theme="dark"] .taxonomy-nav {
+  --tx-cat-accent: #60a5fa;
+  --tx-tag-accent: #5eead4;
+  --tx-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --tx-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.taxonomy-nav-grid {
+  display: grid;
+  gap: 1.1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.taxonomy-nav-card {
+  position: relative;
+  padding: 1.3rem 1.3rem 1.2rem;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--tx-shadow-sm);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.taxonomy-nav-card:hover {
+  box-shadow: var(--tx-shadow-md);
+}
+
+.taxonomy-nav-card::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  bottom: 14px;
+  left: 0;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--accent, var(--secondary));
+  opacity: 0.85;
+}
+
+.taxonomy-nav-card--categories { --accent: var(--tx-cat-accent); }
+.taxonomy-nav-card--tags       { --accent: var(--tx-tag-accent); }
+
+/* ---------- Header ---------- */
+
+.taxonomy-nav-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+
+.taxonomy-nav-header h2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0;
+  color: var(--primary);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.taxonomy-nav-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 999px;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.taxonomy-nav-total {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.6rem;
+  padding: 0 0.45rem;
+  color: var(--secondary);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  background: var(--tertiary);
+  border-radius: 999px;
+}
+
+.taxonomy-nav-header a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  color: var(--secondary);
+  font-size: 0.82rem;
+  line-height: 1;
+  text-decoration: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+
+.taxonomy-nav-header a:hover {
+  color: var(--accent);
+  transform: translateX(2px);
+}
+
+/* ---------- Chip list (shared base) ---------- */
+
+.taxonomy-nav-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.taxonomy-nav-list li { margin: 0; }
+
+.taxonomy-nav-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.42rem 0.78rem;
+  color: var(--primary);
+  font-size: 0.9rem;
+  line-height: 1;
+  text-decoration: none;
+  background: var(--tertiary);
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition: color 0.18s ease,
+              background-color 0.18s ease,
+              border-color 0.18s ease,
+              transform 0.18s ease,
+              box-shadow 0.18s ease;
+}
+
+.taxonomy-nav-list a:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.taxonomy-nav-list a:active {
+  transform: translateY(0);
+}
+
+.taxonomy-nav-label {
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.taxonomy-nav-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.4rem;
+  height: 1.4rem;
+  padding: 0 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  border-radius: 999px;
+  transition: color 0.18s ease, background-color 0.18s ease;
+}
+
+/* ---------- Categories: prominent, filled on hover ---------- */
+
+.taxonomy-nav-list--categories a {
+  background: color-mix(in srgb, var(--tx-cat-accent) 8%, var(--tertiary));
+  border-color: color-mix(in srgb, var(--tx-cat-accent) 18%, transparent);
+}
+
+.taxonomy-nav-list--categories .taxonomy-nav-label {
+  font-weight: 600;
+}
+
+.taxonomy-nav-list--categories .taxonomy-nav-count {
+  color: var(--tx-cat-accent);
+  background: color-mix(in srgb, var(--tx-cat-accent) 14%, transparent);
+}
+
+.taxonomy-nav-list--categories a:hover {
+  color: #fff;
+  background: var(--tx-cat-accent);
+  border-color: var(--tx-cat-accent);
+}
+
+.taxonomy-nav-list--categories a:hover .taxonomy-nav-count {
+  color: var(--tx-cat-accent);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* ---------- Tags: subtle with # prefix ---------- */
+
+.taxonomy-nav-list--tags a {
+  color: var(--secondary);
+  background: transparent;
+  border-color: var(--border);
+}
+
+.taxonomy-nav-list--tags .taxonomy-nav-label::before {
+  content: "#";
+  margin-right: 1px;
+  color: var(--tx-tag-accent);
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.taxonomy-nav-list--tags .taxonomy-nav-count {
+  color: var(--secondary);
+  background: var(--tertiary);
+}
+
+.taxonomy-nav-list--tags a:hover {
+  color: var(--tx-tag-accent);
+  background: color-mix(in srgb, var(--tx-tag-accent) 10%, transparent);
+  border-color: color-mix(in srgb, var(--tx-tag-accent) 45%, transparent);
+}
+
+.taxonomy-nav-list--tags a:hover .taxonomy-nav-label::before {
+  opacity: 1;
+}
+
+.taxonomy-nav-list--tags a:hover .taxonomy-nav-count {
+  color: var(--tx-tag-accent);
+  background: color-mix(in srgb, var(--tx-tag-accent) 16%, transparent);
+}
+
+/* ---------- Dedicated /categories/ and /tags/ pages ---------- */
+/* Scoped to .list so we don't affect in-card chips or per-post footer tags. */
+
+.list .page-header + .terms-tags,
+.list .post-content + .terms-tags,
+.list > .terms-tags {
+  margin: 1.25rem 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0;
+  list-style: none;
+}
+
+.list .terms-tags > li {
+  display: inline-block;
+  margin: 0;
+}
+
+.list .terms-tags > li > a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  padding: 0.5rem 0.95rem;
+  color: var(--primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+  transition: color 0.18s ease, background-color 0.18s ease,
+              border-color 0.18s ease, transform 0.18s ease,
+              box-shadow 0.18s ease;
+}
+
+.list .terms-tags > li > a:hover {
+  color: #fff;
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.12);
+}
+
+.list .terms-tags > li > a sup {
+  top: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 640px) {
+  .taxonomy-nav-card { padding: 1.05rem 1.05rem 1rem; }
+  .taxonomy-nav-header { align-items: flex-start; }
+  .taxonomy-nav-list a { padding: 0.4rem 0.7rem; }
+}
