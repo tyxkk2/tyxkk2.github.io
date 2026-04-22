@@ -1,0 +1,9 @@
+.post-content .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.2rem 0;
+}
+
+.post-content .katex-display > .katex {
+  white-space: nowrap;
+}

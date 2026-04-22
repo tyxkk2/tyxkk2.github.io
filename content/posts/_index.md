@@ -3,5 +3,3 @@ date = '2026-04-11T16:36:00+08:00'
 title = 'Blogs'
 description = 'Browse posts by category or tag.'
 +++
-
-{{< taxonomy-nav >}}

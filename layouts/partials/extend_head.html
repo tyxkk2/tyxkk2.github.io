@@ -1,0 +1,40 @@
+{{- if .Param "math" -}}
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.css"
+  integrity="sha384-UA8juhPf75SzzAMA/4fo3yOU7sBJ0om7SCD2GHq0fZqZco6tr1UCV7nUbk9J90JM"
+  crossorigin="anonymous">
+<script>
+  window.renderPageMath = function () {
+    if (!window.renderMathInElement) return;
+
+    document.querySelectorAll(".post-content").forEach(function (element) {
+      window.renderMathInElement(element, {
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "$", right: "$", display: false },
+          { left: "\\(", right: "\\)", display: false },
+          { left: "\\[", right: "\\]", display: true }
+        ],
+        throwOnError: false
+      });
+    });
+  };
+</script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.js"
+  integrity="sha384-Tt7wBxLKwSzFVRET4O4U9H6v8MNaQ/CjN2FMP4xFm0ErrFu6aNqoonRVW5W40iGI"
+  crossorigin="anonymous"></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/contrib/auto-render.min.js"
+  integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz"
+  crossorigin="anonymous"
+  onload="window.renderPageMath && window.renderPageMath()"></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/contrib/copy-tex.min.js"
+  integrity="sha384-Pe2JWbaShhSRT0SESJ9XLPeAsi4yrNi7r/CiH0Coq7giBjK5a6Ae7XcybE8rNlQP"
+  crossorigin="anonymous"></script>
+{{- end -}}
