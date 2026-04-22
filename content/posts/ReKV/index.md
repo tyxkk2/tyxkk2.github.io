@@ -5,7 +5,7 @@ title = 'ReKV'
 description = 'Streaming Video Question-Answering with In-context Video KV-Cache Retrieval", ICLR 2025.'
 math = true
 categories = ["AI", "VLM", "papers"]
-tags = ["KV cache"]
+tags = ["KV cache", "retrieval", "ReKV"]
 +++
 
 ## Background
