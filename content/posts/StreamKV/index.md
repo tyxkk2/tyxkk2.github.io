@@ -4,7 +4,7 @@ draft = true
 title = 'StreamKV'
 description = 'Streaming Video Question-Answering with Segment-based KV Cache Retrieval and Compression.'
 categories = ["AI", "VLM", "papers"]
-tags = ["KV cache", "retrieval", "compression", "StreamKV"]
+tags = ["KV cache", "retrieval", "compression", "StreamKV", "ReKV"]
 math = true
 +++
 
@@ -24,6 +24,9 @@ StreamKV extends the ReKV line in two directions at the same time:
 The method is still **training-free**, so it can be added to an existing Video-LLM without additional model training.
 
 ## Method
+
+![StreamKV pipeline](./image.png)
+
 ### 1. Semantic Segment Partitioning
 Instead of dividing the stream uniformly, StreamKV detects semantic boundaries by computing the **cosine similarity between adjacent frame embeddings**.
 - If similarity drops below a threshold, this indicates a likely semantic boundary.
@@ -44,13 +47,50 @@ Importantly, the KV block produced from the summary vector is **explicitly kept*
 ### 3. Segment-based Sliding-window Encoding
 Like ReKV, StreamKV still relies on **sliding-window attention** during online video encoding.
 - The current segment and its summary vector are encoded together.
-- The model produces frame-level KV blocks for the segment.
-- These KV blocks are then compressed and stored into a **KV Bank**.
+- A local window of previous KV caches is used as short-term context.
+- The model produces **frame-level KV blocks** for the segment, and also a **summary KV block** from the summary vector.
+- Only the frame-level KV blocks are candidates for later compression; the summary KV block is explicitly preserved.
 
 So the pipeline becomes: **segment → encode → compress → store**.
 
-### 4. KV Compression via Guidance Prompt
-This is one of the main differences from ReKV.
+### 4. Unified Layer-Adaptive KV Selection Module
+This is really the key reusable component in StreamKV, and the paper applies it twice:
+- once for **compression**
+- once for **retrieval**
+
+The paper formulates both tasks in the same abstract way:
+- there is a **selection range**, namely a set of candidate representative key vectors;
+- there is a **selection criterion**, namely a vector that says what we want to keep;
+- there is a fixed **total budget**, namely how many KV entries can be selected overall.
+
+Under this view:
+- in **compression**, the criterion is the **guidance prompt**
+- in **retrieval**, the criterion is the **user question**
+
+The module then works in three steps.
+
+**Step 1: cosine similarity scoring**
+- For each transformer layer, compute the cosine similarity between every candidate representative key and the criterion vector.
+- So each layer gets its own relevance score distribution.
+
+**Step 2: normalization and sorting**
+- Normalize the scores within each layer.
+- Sort them from high to low, so each layer gets a priority list of candidates.
+
+**Step 3: layer-adaptive budget allocation**
+- Instead of giving every layer the same number of selected KV blocks, StreamKV allocates the budget **adaptively across layers**.
+- The paper introduces a global threshold and solves it by **binary search**, so that the total number of selected KV blocks matches the desired budget.
+- Intuitively, layers whose score distributions are more concentrated get a larger effective budget.
+
+So the output of this module is:
+- a set of selected indices for each layer
+- with the global budget satisfied
+- without forcing uniform selection across layers
+
+This is the conceptual center of StreamKV. The later compression and retrieval stages are just two different ways to instantiate the same selection module.
+
+### 5. KV Compression via Guidance Prompt
+This is the **first application** of the unified selection module, and one of the main differences from ReKV.
 
 In streaming settings, the user question is usually **unknown at the time of encoding/compression**, and multi-turn dialogue may happen later. So compression should not depend on a specific question.
 
@@ -61,31 +101,38 @@ To solve this, StreamKV introduces a **guidance prompt** that tries to preserve 
 - scene changes and contextual cues;
 - important factual or numerical details.
 
-The model uses this guidance prompt to score frame-level KV blocks and keep only the most informative ones.
+Now the unified selection module is instantiated as follows:
+- **selection range**: the representative keys of the current segment’s frame-level KV blocks
+- **selection criterion**: the guidance-prompt vector
+- **budget**: determined by the target compression ratio
 
-### 5. Unified Layer-Adaptive KV Selection
-StreamKV formulates both **compression** and **retrieval** as the same problem:
-> given a set of representative key vectors, select the most relevant KV entries under a fixed budget.
+The module selects the most informative frame-level KV blocks under that budget.
 
-The important part is that the budget is **not distributed uniformly across layers**.
-Instead, StreamKV uses a **layer-adaptive allocation** strategy:
-- compute cosine similarity scores at each layer;
-- normalize and sort them;
-- use a global threshold (solved by binary search) to decide how many KV blocks each layer should keep or retrieve.
+After selection:
+- the chosen frame-level KV blocks are kept;
+- the discarded ones are removed;
+- the **summary KV block is always retained** and added to the KV Bank together with the compressed frame-level KV blocks.
 
-So layers with more concentrated useful information get a larger effective budget.
+So compression in StreamKV is not a separate heuristic. It is exactly the unified selection module, with a **question-agnostic semantic criterion**.
 
-This same module is used for:
-- **compression**: select informative KV blocks within each segment;
-- **retrieval**: select question-relevant KV blocks from the KV Bank.
+### 6. Retrieval and Question Answering
+This is the **second application** of the same unified selection module.
 
-### 6. Question Answering with Retrieved KV
 When a question arrives, StreamKV:
 - encodes the question into query vectors;
-- retrieves relevant KV blocks from the KV Bank;
+- uses those question vectors as the **selection criterion**;
+- uses the representative keys stored in the **KV Bank** as the **selection range**;
+- applies the same layer-adaptive selection module under a retrieval budget;
+- retrieves the selected KV blocks from the KV Bank;
 - uses the retrieved KV as context for answer generation.
 
 This preserves the ReKV-style decoupling between **video encoding** and **question answering**, but with better memory efficiency and better retrieval quality.
+
+So from the paper’s perspective:
+- **compression** = unified selection with a guidance prompt
+- **retrieval** = unified selection with a user question
+
+That is why the “Unified Layer-Adaptive KV Selection Module” should really be viewed as the central mechanism, not as a side detail after compression.
 
 ### 7. Position Encoding
 The paper also points out that **RoPE** becomes problematic for long distances.
@@ -94,6 +141,8 @@ So StreamKV uses different positional handling for the two stages:
 - **question answering**: treat retrieved tokens as consecutive and use their **relative positions**, rather than their original absolute positions.
 
 This is conceptually close to ReKV, but here it is integrated with semantic segmentation and compressed retrieval.
+
+> Remark: Same as ReKV, this may be more complicated in newer models
 
 ## Experiments
 
@@ -123,6 +172,9 @@ A few notable results:
 
 The paper’s main message is that **better segmentation + summary preservation + adaptive compression/retrieval** works better than simply storing all KV caches and retrieving from fixed chunks.
 
+> Remark: ReKV doesn't use this benchmark
+> Remark: Do we truly need open-ended questions?
+
 ## Ablations
 The ablation studies are pretty clean and support the design choices.
 
@@ -149,16 +201,14 @@ The paper’s explanation is that once retrieval is precise enough, additional f
 This is the opposite of ReKV, where retrieving more frames may be necessary because retrieval precision is lower.
 
 ## My Takeaways
-I think the most important contribution of StreamKV is not just “compress KV”, but that it changes the **unit of memory management**:
-- ReKV works more like **frame/block-level retrieval over a uniformly chunked history**;
-- StreamKV moves to **segment-level semantics first**, then performs both compression and retrieval around that structure.
+The semantic chunnking is interesting. I think there are many other papers did so. It's a very simple approach.
 
 The guidance-prompt design is also interesting. It avoids depending on the future user question, which is exactly the right constraint in a real streaming setting.
 
 Another useful point is that StreamKV unifies **compression** and **retrieval** into the same layer-adaptive selection framework. That makes the system conceptually cleaner and probably easier to extend.
 
 ## Limitations / Open Questions
-- The method is still built on **sliding-window encoding**, so long-range information outside the local window is only preserved through stored KV blocks and summaries.
+- The method is still built on **sliding-window encoding**, so long-range information outside the local window is only preserved through stored KV blocks and summaries. This may affect the ability of models.
 - The guidance prompt is hand-designed; its quality may affect what semantics survive compression.
 - The paper mainly evaluates on **StreamingBench**; it would be useful to see broader validation on other streaming or open-ended benchmarks.
 - It is still not obvious how well this design transfers to newer VLMs with more complicated positional / multimodal tokenization schemes.
