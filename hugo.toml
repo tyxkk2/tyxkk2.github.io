@@ -21,6 +21,7 @@ theme = 'PaperMod'
 
 [params]
   defaultTheme = "auto"
+  defaultPostDecorImage = "images/bg.jpg"
   ShowReadingTime = true
   ShowShareButtons = false
   ShowPostNavLinks = true
