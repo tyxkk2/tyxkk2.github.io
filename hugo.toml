@@ -10,6 +10,15 @@ theme = 'PaperMod'
 [pagination]
   pagerSize = 10
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['$$', '$$'], ['\\[', '\\]']]
+          inline = [['$', '$'], ['\\(', '\\)']]
+
 [params]
   defaultTheme = "auto"
   ShowReadingTime = true
