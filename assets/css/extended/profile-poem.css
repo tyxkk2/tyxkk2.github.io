@@ -1,0 +1,19 @@
+.home-poem {
+    margin-top: 18px;
+    color: var(--secondary);
+    font-size: 0.92rem;
+    line-height: 1.9;
+    letter-spacing: 0;
+}
+
+.home-poem p {
+    margin: 0;
+}
+
+.home-poem cite {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.82rem;
+    font-style: normal;
+    opacity: 0.82;
+}

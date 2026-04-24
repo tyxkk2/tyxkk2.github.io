@@ -6,6 +6,8 @@ ShowBreadCrumbs = false
 ShowPostNavLinks = false
 ShowToc = true
 +++
+
+## About
 Hi, I'm **Yuxuan Tang(唐雨轩)**, a senior undergraduate majoring in Computer Science and Technology with a minor in Mathematics at Tsinghua University.
 
 Now I'm working in Illinois NSAI lab with [Francis Y. Yan](https://fyy.cs.illinois.edu) on building an efficient KV-cache-based retrieval framework to optimize long-context video understanding.

@@ -36,6 +36,15 @@ theme = 'PaperMod'
   imageUrl = "images/avatar.jpg"
   imageTitle = "avatar"
 
+[params.homePoem]
+  lines = [
+    "それが虚無ならば虚無自身がこのとほりで",
+    "ある程度まではみんなに共通いたします",
+    "すべてがわたくしの中のみんなであるやうに",
+    "　みんなのおのおののなかのすべてですから"
+  ]
+  source = "宮沢賢治『春と修羅』"
+
 [[params.socialIcons]]
   name = "github"
   url = "https://github.com/tyxkk2"
