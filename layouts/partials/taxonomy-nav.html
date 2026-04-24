@@ -1,3 +1,4 @@
+{{- $page := . -}}
 {{- $categories := site.Taxonomies.categories -}}
 {{- $tags := site.Taxonomies.tags -}}
 
@@ -28,7 +29,9 @@
     {{- end -}}
 
     {{- with $tags -}}
-    <section class="taxonomy-nav-card taxonomy-nav-card--tags">
+    {{- $collapseTags := gt (len .) 12 -}}
+    {{- $toggleID := printf "taxonomy-nav-tags-%s" ($page.RelPermalink | anchorize) -}}
+    <section class="taxonomy-nav-card taxonomy-nav-card--tags{{ if $collapseTags }} taxonomy-nav-card--collapsible{{ end }}">
       <div class="taxonomy-nav-header">
         <h2>
           <span class="taxonomy-nav-dot" aria-hidden="true"></span>
@@ -37,6 +40,10 @@
         </h2>
         <a href="{{ "/tags/" | relURL }}">View all &rarr;</a>
       </div>
+      {{- if $collapseTags -}}
+      <input class="taxonomy-nav-toggle-input" type="checkbox" id="{{ $toggleID }}" aria-label="Toggle tags list">
+      <div class="taxonomy-nav-collapsible">
+      {{- end -}}
       <ul class="terms-tags taxonomy-nav-list taxonomy-nav-list--tags">
         {{- range .Alphabetical -}}
         <li>
@@ -47,6 +54,13 @@
         </li>
         {{- end -}}
       </ul>
+      {{- if $collapseTags -}}
+      </div>
+      <label class="taxonomy-nav-toggle" for="{{ $toggleID }}">
+        <span class="taxonomy-nav-toggle-more">Show all tags</span>
+        <span class="taxonomy-nav-toggle-less">Collapse tags</span>
+      </label>
+      {{- end -}}
     </section>
     {{- end -}}
   </div>
