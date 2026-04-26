@@ -18,5 +18,10 @@ I'll be visiting UIUC in person starting Fall 2026 — feel free to reach out if
 Now my interests lie in LLM inference systems and optimizations.
 
 ## Contact
+
+Please contact me in email if you are interested in anything of me!
+
+And feel free to open an issue on this github repo if you have any questions / thoughts about it!
+
 - Email: [tyxkk2@gmail.com](mailto:tyxkk2@gmail.com)
 - GitHub: [@tyxkk2](https://github.com/tyxkk2)
