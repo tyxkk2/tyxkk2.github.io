@@ -7,6 +7,10 @@ tags = ["KV cache", "retrieval", "compression", "StreamKV", "ReKV"]
 math = true
 +++
 
+Paper: [StreamKV: Streaming Video Question-Answering with Segment-based KV Cache Retrieval and Compression](https://arxiv.org/abs/2511.07278)
+
+Code: [sou1p0wer/StreamKV](https://github.com/sou1p0wer/StreamKV)
+
 ## Background
 **Streaming video question-answering (StreamingVQA)** requires a model to continuously process incoming video, preserve useful historical context, and answer questions online with low latency.
 

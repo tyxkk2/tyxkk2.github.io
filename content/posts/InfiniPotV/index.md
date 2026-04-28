@@ -7,6 +7,10 @@ tags = ["KV cache", "compression", "streaming", "InfiniPot-V", "ReKV"]
 math = true
 +++
 
+Paper: [InfiniPot-V: Memory-Constrained KV Cache Compression for Streaming Video Understanding](https://arxiv.org/abs/2506.15745)
+
+Code: [aiha-lab/InfiniPot-V](https://github.com/aiha-lab/InfiniPot-V)
+
 ## Background
 **Streaming video understanding** is more constrained than offline long-video understanding.
 

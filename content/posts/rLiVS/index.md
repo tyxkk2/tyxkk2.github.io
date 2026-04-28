@@ -7,6 +7,10 @@ tags = ["token selection", "streaming", "Video-LLM", "rLiVS", "RAG", "caption"]
 math = true
 +++
 
+Paper: [Recurrent Attention-based Token Selection for Efficient Streaming Video-LLMs](https://arxiv.org/abs/2510.17364)
+
+Code: [vdorovatas/rLiVS](https://github.com/vdorovatas/rLiVS)
+
 ## Background
 **Streaming video understanding** is hard because the model must process incoming frames online, keep useful past information, and still answer questions with low latency.
 

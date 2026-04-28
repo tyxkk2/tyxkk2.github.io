@@ -8,6 +8,10 @@ categories = ["AI", "VLM", "papers"]
 tags = ["KV cache", "retrieval", "ReKV"]
 +++
 
+Paper: [Streaming Video Question-Answering with In-context Video KV-Cache Retrieval](https://arxiv.org/abs/2503.00540)
+
+Code: [Becomebright/ReKV](https://github.com/Becomebright/ReKV)
+
 ## Background
 Consider the problem of **streaming video question-answering (StreamingVQA)**, it presents three challenges:
 - **Efficient Video Encoding**: we need to  efficiently process incoming frames without access to future frames or frequent revisiting of distant past frames.
