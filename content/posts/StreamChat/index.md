@@ -1,5 +1,5 @@
 +++
-date = '2026-05-02T15:20:00+08:00'
+date = '2026-05-02T01:19:20+08:00'
 title = 'StreamChat'
 description = 'Streaming Video Understanding and Multi-round Interaction with Memory-enhanced Knowledge.(ICLR 2025)'
 categories = ["AI", "VLM", "papers"]
