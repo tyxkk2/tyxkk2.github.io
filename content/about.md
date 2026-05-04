@@ -12,10 +12,13 @@ Hi, I'm **Yuxuan Tang(唐雨轩)**, a senior undergraduate majoring in Computer 
 
 Now I'm working in Illinois NSAI lab with [Francis Y. Yan](https://fyy.cs.illinois.edu) on building an efficient KV-cache-based retrieval framework to optimize long-context video understanding.
 
-I'll be visiting UIUC in person starting Fall 2026 — feel free to reach out if you're around!
-
 ## Interests
 Now my interests lie in LLM inference systems and optimizations.
+
+## Misc
+I'll be visiting UIUC in person starting Fall 2026 — feel free to reach out if you're around!
+
+As scheduled, I will be at Comic Market 108 (C108) in Tokyo, during August 15-16, 2026.
 
 ## Contact
 
