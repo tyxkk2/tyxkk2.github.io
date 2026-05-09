@@ -2,8 +2,8 @@
 date = '2026-04-27T02:10:00+08:00'
 title = 'Long Streaming Video Understanding Pipeline'
 description = 'A pipeline view of recent long streaming video understanding papers.'
-categories = ["AI", "VLM", "paper summary"]
-tags = ["streaming", "Video-LLM", "KV cache", "retrieval", "compression", "survey"]
+categories = ["AI", "VLM", "KV cache", "summary"]
+tags = ["survey", "Video-LLM", "streaming", "long video", "retrieval", "compression"]
 math = true
 +++
 

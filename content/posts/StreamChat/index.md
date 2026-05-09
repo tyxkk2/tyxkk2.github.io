@@ -2,8 +2,8 @@
 date = '2026-05-02T01:19:20+08:00'
 title = 'StreamChat'
 description = 'Streaming Video Understanding and Multi-round Interaction with Memory-enhanced Knowledge.(ICLR 2025)'
-categories = ["AI", "VLM", "papers"]
-tags = ["streaming", "Video-LLM", "memory", "RAG", "StreamChat", "Flash-VStream", "Video-online"]
+categories = ["AI", "VLM", "paper", "RAG"]
+tags = ["Video-LLM", "streaming", "memory", "multi-turn", "StreamChat", "Flash-VStream"]
 math = true
 decor_image = "images/bg2.png"
 +++

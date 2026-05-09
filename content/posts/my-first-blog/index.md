@@ -1,6 +1,8 @@
 +++
 date = '2026-04-11T16:36:00+08:00'
 title = 'My first blog'
+categories = ["Personal"]
+tags = ["blog", "hello world"]
 +++
 
 

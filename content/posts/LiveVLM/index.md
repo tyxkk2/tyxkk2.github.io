@@ -2,8 +2,8 @@
 date = '2026-04-25T01:44:44+08:00'
 title = 'LiveVLM'
 description = 'LiveVLM: Efficient Online Video Understanding via Streaming-Oriented KV Cache and Retrieval(DAC 26)'
-categories = ["AI", "VLM", "papers"]
-tags = ["KV cache", "retrieval", "compression", "streaming", "LiveVLM", "ReKV", "StreamMem"]
+categories = ["AI", "VLM", "paper", "KV cache"]
+tags = ["Video-LLM", "streaming", "retrieval", "compression", "LiveVLM"]
 # Set to true on posts that need LaTeX rendering.
 math = true
 +++

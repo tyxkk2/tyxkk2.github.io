@@ -4,8 +4,8 @@ date = '2026-04-22T16:20:54+08:00'
 title = 'ReKV'
 description = 'Streaming Video Question-Answering with In-context Video KV-Cache Retrieval", ICLR 2025.'
 math = true
-categories = ["AI", "VLM", "papers"]
-tags = ["KV cache", "retrieval", "ReKV"]
+categories = ["AI", "VLM", "paper", "KV cache"]
+tags = ["Video-LLM", "streaming", "retrieval", "ReKV"]
 +++
 
 Paper: [Streaming Video Question-Answering with In-context Video KV-Cache Retrieval](https://arxiv.org/abs/2503.00540)

@@ -2,8 +2,8 @@
 date = '2026-04-23T00:30:00+08:00'
 title = 'InfiniPot-V'
 description = 'Memory-Constrained KV Cache Compression for Streaming Video Understanding.(NeurIPS 2025)'
-categories = ["AI", "VLM", "papers"]
-tags = ["KV cache", "compression", "streaming", "InfiniPot-V", "ReKV"]
+categories = ["AI", "VLM", "paper", "KV cache"]
+tags = ["Video-LLM", "streaming", "compression", "InfiniPot-V"]
 math = true
 +++
 

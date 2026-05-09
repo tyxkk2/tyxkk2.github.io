@@ -2,8 +2,8 @@
 date = '2026-05-02T17:28:21+08:00'
 title = 'Benchmarks for Streaming Video Understanding'
 description = 'A short index of benchmarks used by recent streaming and long-video VLM papers.'
-categories = ["AI", "VLM", "papers"]
-tags = ["benchmark", "streaming", "Video-LLM", "long video", "ReKV", "StreamChat"]
+categories = ["AI", "VLM", "summary"]
+tags = ["benchmark", "survey", "Video-LLM", "streaming", "long video", "StreamingBench", "MLVU", "Video-MME"]
 math = false
 decor_image = "images/bg2.png"
 +++

@@ -2,8 +2,8 @@
 date = '2026-04-27T01:22:21+08:00'
 title = 'StreamingTOM'
 description = 'StreamingTOM: Streaming Token Compression for Efficient Video Understanding.(CVPR 2026)'
-categories = ["AI", "VLM", "papers"]
-tags = ["token compression", "KV cache", "quantization", "streaming", "StreamingTOM", "LiveVLM", "StreamMem", "InfiniPot-V"]
+categories = ["AI", "VLM", "paper", "KV cache"]
+tags = ["Video-LLM", "streaming", "token compression", "quantization", "StreamingTOM"]
 math = true
 +++
 

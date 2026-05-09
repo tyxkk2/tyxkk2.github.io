@@ -2,8 +2,8 @@
 date = '2026-04-23T14:20:00+08:00'
 title = 'rLiVS'
 description = 'Recurrent Attention-based Token Selection for Efficient Streaming Video-LLMs.(NeurIPS 2025)'
-categories = ["AI", "VLM", "papers"]
-tags = ["token selection", "streaming", "Video-LLM", "rLiVS", "RAG", "caption"]
+categories = ["AI", "VLM", "paper", "RAG"]
+tags = ["Video-LLM", "streaming", "token selection", "caption", "rLiVS"]
 math = true
 +++
 

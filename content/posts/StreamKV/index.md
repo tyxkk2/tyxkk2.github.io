@@ -2,8 +2,8 @@
 date = '2026-04-22T18:11:40+08:00'
 title = 'StreamKV'
 description = 'Streaming Video Question-Answering with Segment-based KV Cache Retrieval and Compression.'
-categories = ["AI", "VLM", "papers"]
-tags = ["KV cache", "retrieval", "compression", "StreamKV", "ReKV"]
+categories = ["AI", "VLM", "paper", "KV cache"]
+tags = ["Video-LLM", "streaming", "retrieval", "compression", "StreamKV"]
 math = true
 +++
 

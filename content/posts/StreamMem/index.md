@@ -2,8 +2,8 @@
 date = '2026-04-24T22:40:03+08:00'
 title = 'StreamMem'
 description = 'Query-Agnostic KV Cache Memory for Streaming Video Understanding.'
-categories = ["AI", "VLM", "papers"]
-tags = ["KV cache", "compression", "streaming", "StreamMem", "ReKV", "InfiniPot-V"]
+categories = ["AI", "VLM", "paper", "KV cache"]
+tags = ["Video-LLM", "streaming", "memory", "compression", "StreamMem"]
 # Set to true on posts that need LaTeX rendering.
 math = true
 +++
