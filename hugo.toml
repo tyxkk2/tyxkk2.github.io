@@ -11,6 +11,11 @@ theme = 'PaperMod'
   pagerSize = 10
 
 [markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    noClasses = false
+
   [markup.goldmark]
     [markup.goldmark.extensions]
       [markup.goldmark.extensions.passthrough]
