@@ -1,7 +1,9 @@
 +++
 date = '2026-04-27T01:22:21+08:00'
+lastmod = '2026-06-08T15:26:57+08:00'
 title = 'StreamingTOM'
-description = 'StreamingTOM: Streaming Token Compression for Efficient Video Understanding.(CVPR 2026)'
+description = 'Streaming Token Compression for Efficient Video Understanding.'
+venue = 'CVPR 2026'
 categories = ["AI", "VLM", "paper", "KV cache"]
 tags = ["Video-LLM", "streaming", "token compression", "quantization", "StreamingTOM"]
 math = true

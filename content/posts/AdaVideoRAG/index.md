@@ -1,7 +1,9 @@
 +++
 date = '2026-05-09T19:22:47+08:00'
+lastmod = '2026-06-08T15:26:57+08:00'
 title = 'AdaVideoRAG'
-description = 'Omni-Contextual Adaptive Retrieval-Augmented Efficient Long Video Understanding.(NeurIPS 2025)'
+description = 'Omni-Contextual Adaptive Retrieval-Augmented Efficient Long Video Understanding.'
+venue = 'NeurIPS 2025'
 categories = ["AI", "VLM", "paper", "RAG"]
 tags = ["Video-LLM", "long video", "retrieval", "knowledge graph", "AdaVideoRAG", "HiVU"]
 decor_image = "images/bg2.png"

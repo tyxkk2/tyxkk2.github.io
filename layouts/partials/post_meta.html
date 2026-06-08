@@ -11,6 +11,10 @@
 {{- end }}
 {{- end }}
 
+{{- with .Params.venue -}}
+{{- $scratch.Add "meta" (slice (printf "<span class='post-venue'>%s</span>" .)) }}
+{{- end }}
+
 {{- if (.Param "ShowReadingTime") -}}
 {{- $scratch.Add "meta" (slice (printf "<span>%s</span>" (i18n "read_time" .ReadingTime | default (printf "%d min" .ReadingTime)))) }}
 {{- end }}

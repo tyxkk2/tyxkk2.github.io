@@ -1,7 +1,9 @@
 +++
 date = '2026-05-09T20:54:59+08:00'
+lastmod = '2026-06-08T15:26:57+08:00'
 title = 'ViG-RAG'
-description = 'Video-aware Graph Retrieval-Augmented Generation via Temporal and Semantic Hybrid Reasoning.(AAAI 2026)'
+description = 'Video-aware Graph Retrieval-Augmented Generation via Temporal and Semantic Hybrid Reasoning.'
+venue = 'AAAI 2026'
 categories = ["AI", "VLM", "paper", "RAG"]
 tags = ["Video-LLM", "long video", "retrieval", "knowledge graph", "temporal reasoning", "GMM", "ViG-RAG"]
 math = true

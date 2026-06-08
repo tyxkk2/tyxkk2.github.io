@@ -1,8 +1,10 @@
 +++
 date = '2026-04-22T16:20:54+08:00'
+lastmod = '2026-06-08T15:26:57+08:00'
 # draft = true
 title = 'ReKV'
-description = 'Streaming Video Question-Answering with In-context Video KV-Cache Retrieval", ICLR 2025.'
+description = 'Streaming Video Question-Answering with In-context Video KV-Cache Retrieval.'
+venue = 'ICLR 2025'
 math = true
 categories = ["AI", "VLM", "paper", "KV cache"]
 tags = ["Video-LLM", "streaming", "retrieval", "ReKV"]

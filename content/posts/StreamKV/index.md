@@ -1,7 +1,9 @@
 +++
 date = '2026-04-22T18:11:40+08:00'
+lastmod = '2026-06-08T15:26:57+08:00'
 title = 'StreamKV'
 description = 'Streaming Video Question-Answering with Segment-based KV Cache Retrieval and Compression.'
+venue = 'AAAI 2026'
 categories = ["AI", "VLM", "paper", "KV cache"]
 tags = ["Video-LLM", "streaming", "retrieval", "compression", "StreamKV"]
 math = true

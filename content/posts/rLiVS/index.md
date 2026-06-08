@@ -1,7 +1,9 @@
 +++
 date = '2026-04-23T14:20:00+08:00'
+lastmod = '2026-06-08T15:26:57+08:00'
 title = 'rLiVS'
-description = 'Recurrent Attention-based Token Selection for Efficient Streaming Video-LLMs.(NeurIPS 2025)'
+description = 'Recurrent Attention-based Token Selection for Efficient Streaming Video-LLMs.'
+venue = 'NeurIPS 2025'
 categories = ["AI", "VLM", "paper", "RAG"]
 tags = ["Video-LLM", "streaming", "token selection", "caption", "rLiVS"]
 math = true

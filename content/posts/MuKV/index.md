@@ -1,8 +1,9 @@
 +++
 date = '2026-06-05T22:50:59+08:00'
-lastmod = '2026-06-06T23:28:31+08:00'
+lastmod = '2026-06-08T15:26:57+08:00'
 title = 'MuKV'
 description = 'Multi-grained KV-cache compression for long streaming VideoQA.'
+venue = 'CVPR 2026'
 categories = ["AI", "VLM", "paper", "KV cache"]
 tags = ["Video-LLM", "streaming", "long video", "retrieval", "compression", "KV cache", "MuKV"]
 math = true

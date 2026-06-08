@@ -1,7 +1,9 @@
 +++
 date = '2026-04-24T22:40:03+08:00'
+lastmod = '2026-06-08T15:26:57+08:00'
 title = 'StreamMem'
 description = 'Query-Agnostic KV Cache Memory for Streaming Video Understanding.'
+venue = 'VidLLMs 2026'
 categories = ["AI", "VLM", "paper", "KV cache"]
 tags = ["Video-LLM", "streaming", "memory", "compression", "StreamMem"]
 # Set to true on posts that need LaTeX rendering.
