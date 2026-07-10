@@ -1,7 +1,9 @@
 <div class="profile">
     {{- with site.Params.profileMode }}
     <div class="profile_inner">
+        <div class="profile-identity">
         {{- if .imageUrl -}}
+        <div class="profile-avatar">
         {{- $img := "" }}
         {{- if not (urls.Parse .imageUrl).IsAbs }}
             {{- $img = resources.Get .imageUrl }}
@@ -27,11 +29,12 @@
                 height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />
         {{- else }}
         <img draggable="false" src="{{ .imageUrl | absURL }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
-            height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />
+                height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />
         {{- end }}
+        </div>
         {{- end }}
         <h1>{{ .title | default site.Title | markdownify }}</h1>
-        <span>{{ .subtitle | markdownify }}</span>
+        <span class="profile-subtitle">{{ .subtitle | markdownify }}</span>
         {{- partial "social_icons.html" -}}
 
         {{- with .buttons }}
@@ -53,6 +56,7 @@
             {{- end }}
         </div>
         {{- end }}
+        </div>
 
         {{- with site.Params.homePoem }}
         <div class="home-poem">

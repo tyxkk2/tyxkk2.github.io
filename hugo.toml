@@ -46,6 +46,8 @@ theme = 'PaperMod'
   subtitle = "CS @ Tsinghua · LLM Systems · Long-Video Understanding"
   imageUrl = "images/avatar.jpg"
   imageTitle = "Yuxuan Tang's avatar"
+  imageWidth = 190
+  imageHeight = 190
 
 [params.homePoem]
   lines = [
