@@ -1,5 +1,6 @@
 baseURL = 'https://tyxkk2.me'
-locale = 'zh-cn'
+defaultContentLanguage = 'en'
+locale = 'en-US'
 title = 'Yuxuan Tang'
 theme = 'PaperMod'
 
@@ -25,6 +26,8 @@ theme = 'PaperMod'
           inline = [['$', '$'], ['\\(', '\\)']]
 
 [params]
+  description = "Notes on LLM systems, efficient inference, and long-video understanding by Yuxuan Tang."
+  images = ["images/bg.jpg"]
   defaultTheme = "auto"
   defaultPostDecorImage = "images/bg.jpg"
   ShowReadingTime = true
@@ -34,12 +37,15 @@ theme = 'PaperMod'
   ShowCodeCopyButtons = true
   ShowToc = true
 
+[params.social]
+  twitter = "tyxkk2"
+
 [params.profileMode]
   enabled = true
   title = "Yuxuan Tang"
   subtitle = "CS @ Tsinghua · LLM Systems · Long-Video Understanding"
   imageUrl = "images/avatar.jpg"
-  imageTitle = "avatar"
+  imageTitle = "Yuxuan Tang's avatar"
 
 [params.homePoem]
   lines = [
