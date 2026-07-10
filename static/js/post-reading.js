@@ -4,6 +4,23 @@
 
   if (!toc || !article) return;
 
+  const tocDetails = toc.querySelector("[data-reading-toc-details]");
+  const compactToc = window.matchMedia("(max-width: 980px)");
+
+  if (tocDetails) {
+    const syncTocLayout = (mediaQuery) => {
+      tocDetails.toggleAttribute("open", !mediaQuery.matches);
+    };
+
+    syncTocLayout(compactToc);
+
+    if (compactToc.addEventListener) {
+      compactToc.addEventListener("change", syncTocLayout);
+    } else {
+      compactToc.addListener(syncTocLayout);
+    }
+  }
+
   const tocLinks = Array.from(toc.querySelectorAll('a[href^="#"]'));
   if (!tocLinks.length) return;
 
@@ -22,13 +39,18 @@
   let activeId = "";
 
   const scrollPanelToLink = (link) => {
-    const panelRect = toc.getBoundingClientRect();
+    if (tocDetails && !tocDetails.open) return;
+
+    const inner = toc.querySelector(".reading-toc__inner");
+    const innerOverflow = inner ? window.getComputedStyle(inner).overflowY : "";
+    const scrollPanel = inner && /auto|scroll/.test(innerOverflow) ? inner : toc;
+    const panelRect = scrollPanel.getBoundingClientRect();
     const linkRect = link.getBoundingClientRect();
     const pad = 8;
     if (linkRect.top < panelRect.top + pad) {
-      toc.scrollTop += linkRect.top - panelRect.top - pad;
+      scrollPanel.scrollTop += linkRect.top - panelRect.top - pad;
     } else if (linkRect.bottom > panelRect.bottom - pad) {
-      toc.scrollTop += linkRect.bottom - panelRect.bottom + pad;
+      scrollPanel.scrollTop += linkRect.bottom - panelRect.bottom + pad;
     }
   };
 
@@ -80,6 +102,19 @@
     setActive(initialHash);
   } else {
     refreshActive();
+  }
+
+  if (tocDetails) {
+    tocDetails.addEventListener("toggle", () => {
+      if (!tocDetails.open || !activeId) return;
+      window.requestAnimationFrame(() => scrollPanelToLink(linkById.get(activeId)));
+    });
+
+    tocLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (compactToc.matches) tocDetails.removeAttribute("open");
+      });
+    });
   }
 
   window.addEventListener(

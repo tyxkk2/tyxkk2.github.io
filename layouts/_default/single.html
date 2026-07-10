@@ -16,12 +16,16 @@
 
 <div class="post-reading-shell{{ if $hasToc }} has-toc{{ end }}">
   {{- if $hasToc }}
+  {{- $tocLabel := i18n "toc" | default "Contents" -}}
   <aside class="post-reading-aside post-reading-aside--toc">
     <div class="reading-panel reading-toc" data-reading-toc>
-      <p class="reading-panel__eyebrow">{{- i18n "toc" | default "Contents" -}}</p>
-      <div class="reading-toc__inner">
-        {{- .TableOfContents -}}
-      </div>
+      <p class="reading-panel__eyebrow">{{- $tocLabel -}}</p>
+      <details class="reading-toc__details" data-reading-toc-details open>
+        <summary class="reading-toc__summary">{{- $tocLabel -}}</summary>
+        <div class="reading-toc__inner">
+          {{- .TableOfContents -}}
+        </div>
+      </details>
     </div>
   </aside>
   {{- end }}
