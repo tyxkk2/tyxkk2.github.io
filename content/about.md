@@ -18,7 +18,9 @@ Now my interests lie in LLM inference systems and optimizations.
 ## Misc
 I'll be visiting UIUC in person starting Fall 2026 — feel free to reach out if you're around!
 
-As scheduled, I will be at Comic Market 108 (C108) in Tokyo, during August 15-16, 2026.
+~~As scheduled, I will be at Comic Market 108 (C108) in Tokyo, during August 15-16, 2026.~~ (SAD)
+
+I may attend Comic Market 109 (C109) in Tokyo at the end of 2026.
 
 ## Contact
 
