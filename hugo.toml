@@ -37,7 +37,7 @@ theme = 'PaperMod'
 [params.profileMode]
   enabled = true
   title = "Yuxuan Tang"
-  subtitle = "Tsinghua CS undergraduate · CS · AI · Math"
+  subtitle = "CS @ Tsinghua · LLM Systems · Long-Video Understanding"
   imageUrl = "images/avatar.jpg"
   imageTitle = "avatar"
 

@@ -50,10 +50,6 @@
 .taxonomy-nav-card--categories { --accent: var(--tx-cat-accent); }
 .taxonomy-nav-card--tags       { --accent: var(--tx-tag-accent); }
 
-.taxonomy-nav-card--collapsible {
-  --tx-collapsed-tags-height: 9.25rem;
-}
-
 /* ---------- Header ---------- */
 
 .taxonomy-nav-header {
@@ -242,111 +238,6 @@
   background: color-mix(in srgb, var(--tx-tag-accent) 16%, transparent);
 }
 
-/* ---------- Expandable tags on /posts/ ---------- */
-
-.taxonomy-nav-toggle-input {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
-.taxonomy-nav-collapsible {
-  position: relative;
-  max-height: var(--tx-collapsed-tags-height);
-  overflow: hidden;
-  transition: max-height 0.24s ease;
-}
-
-.taxonomy-nav-collapsible::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 3.2rem;
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    color-mix(in srgb, var(--entry) 0%, transparent),
-    var(--entry) 82%
-  );
-  transition: opacity 0.18s ease;
-}
-
-.taxonomy-nav-toggle-input:checked ~ .taxonomy-nav-collapsible {
-  max-height: 90rem;
-}
-
-.taxonomy-nav-toggle-input:checked ~ .taxonomy-nav-collapsible::after {
-  opacity: 0;
-}
-
-.taxonomy-nav-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.85rem;
-  padding: 0.46rem 0.78rem;
-  color: var(--tx-tag-accent);
-  font-size: 0.82rem;
-  font-weight: 700;
-  line-height: 1;
-  cursor: pointer;
-  user-select: none;
-  background: color-mix(in srgb, var(--tx-tag-accent) 8%, transparent);
-  border: 1px solid color-mix(in srgb, var(--tx-tag-accent) 32%, transparent);
-  border-radius: 999px;
-  transition: color 0.18s ease,
-              background-color 0.18s ease,
-              border-color 0.18s ease,
-              transform 0.18s ease;
-}
-
-.taxonomy-nav-toggle::after {
-  content: "";
-  width: 0.44rem;
-  height: 0.44rem;
-  margin-top: -0.12rem;
-  border-right: 1.5px solid currentColor;
-  border-bottom: 1.5px solid currentColor;
-  transform: rotate(45deg);
-  transition: transform 0.18s ease, margin-top 0.18s ease;
-}
-
-.taxonomy-nav-toggle:hover {
-  color: #fff;
-  background: var(--tx-tag-accent);
-  border-color: var(--tx-tag-accent);
-  transform: translateY(-1px);
-}
-
-.taxonomy-nav-toggle-input:focus-visible ~ .taxonomy-nav-toggle {
-  outline: 2px solid color-mix(in srgb, var(--tx-tag-accent) 55%, transparent);
-  outline-offset: 3px;
-}
-
-.taxonomy-nav-toggle-less {
-  display: none;
-}
-
-.taxonomy-nav-toggle-input:checked ~ .taxonomy-nav-toggle .taxonomy-nav-toggle-more {
-  display: none;
-}
-
-.taxonomy-nav-toggle-input:checked ~ .taxonomy-nav-toggle .taxonomy-nav-toggle-less {
-  display: inline;
-}
-
-.taxonomy-nav-toggle-input:checked ~ .taxonomy-nav-toggle::after {
-  margin-top: 0.16rem;
-  transform: rotate(225deg);
-}
-
 /* ---------- Dedicated /categories/ and /tags/ pages ---------- */
 /* Scoped to .list so we don't affect in-card chips or per-post footer tags. */
 
@@ -402,7 +293,6 @@
 /* ---------- Responsive ---------- */
 
 @media (max-width: 640px) {
-  .taxonomy-nav-card--collapsible { --tx-collapsed-tags-height: 10.75rem; }
   .taxonomy-nav-card { padding: 1.05rem 1.05rem 1rem; }
   .taxonomy-nav-header { align-items: flex-start; }
   .taxonomy-nav-list a { padding: 0.4rem 0.7rem; }
