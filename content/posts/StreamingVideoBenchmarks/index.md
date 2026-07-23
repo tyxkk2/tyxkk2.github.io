@@ -1,10 +1,10 @@
 +++
 date = '2026-05-02T17:28:21+08:00'
-lastmod = '2026-06-19T19:37:36+08:00'
+lastmod = '2026-07-24T02:11:12+08:00'
 title = 'Benchmarks for Streaming Video Understanding'
 description = 'A short index of benchmarks used by recent streaming and long-video VLM papers.'
 categories = ["AI", "VLM", "summary"]
-tags = ["benchmark", "survey", "Video-LLM", "streaming", "long video", "StreamingBench", "OVO-Bench", "MLVU", "Video-MME", "HiVU", "LongVideoBench", "LongerVideos"]
+tags = ["benchmark", "survey", "Video-LLM", "streaming", "long video", "StreamingBench", "OVO-Bench", "Inf-Streams-Eval", "MLVU", "Video-MME", "HiVU", "LongVideoBench", "HourVideo", "LongerVideos"]
 math = false
 decor_image = "images/bg2.png"
 +++
@@ -26,8 +26,9 @@ backbones, frame rates, memory budgets, judge versions, subtitle settings, and d
 | --- | --- | --- |
 | **RVS-Ego** | Streaming QA on egocentric videos with timestamped questions. Good for testing whether old visual evidence remains accessible. | **ReKV**, **StreamMem**, **LiveVLM**, **StreamingTOM**, **rLiVS**, **MuKV** |
 | **RVS-Movie** | Streaming QA on movie-style videos. More narrative and event-heavy than RVS-Ego. | **ReKV**, **StreamMem**, **LiveVLM**, **StreamingTOM**, **rLiVS**, **MuKV** |
-| **StreamingBench** | Broader streaming benchmark. Recent papers often use the real-time visual understanding subset for causal evaluation, while the full benchmark also covers omni-source and contextual understanding. | **StreamKV**, **LiveVLM**, **InfiniPot-V**, **MuKV**, **SimpleStream** |
-| **OVO-Bench** | Observed-only streaming evaluation with real-time visual perception and backward tracing tracks. Useful for separating recent-scene perception from memory recall. | **SimpleStream** |
+| **StreamingBench** | Broader streaming benchmark. Recent papers often use the real-time visual understanding subset for causal evaluation, while the full benchmark also covers omni-source and contextual understanding. | **StreamKV**, **LiveVLM**, **InfiniPot-V**, **MuKV**, **SimpleStream**, **WeaveTime**, **STC**, **OASIS** |
+| **OVO-Bench** | Timestamp-conditioned online evaluation with real-time perception, backward tracing, and forward active responding tracks. Useful for separating present grounding from historical recall and future-event waiting. | **SimpleStream**, **StreamingVLM**, **WeaveTime**, **STC**, **OASIS** |
+| **Inf-Streams-Eval** | Dense, per-second commentary over complete sports broadcasts averaging more than two hours. It evaluates synchronized continuous generation rather than question answering. | **StreamingVLM** |
 | **StreamBench** | Online multi-turn video QA with memory-heavy question types such as object search, long-term memory search, short-term memory search, conversational interaction, knowledge QA, and simple factual QA. | **StreamChat**; baselines include **Video-online** and **Flash-VStream** |
 
 ### RVS-Ego
@@ -71,10 +72,15 @@ Metric scope varies by paper: some use the full benchmark, some use real-time vi
 | InfiniPot-V | Qwen-2.5-VL-7B; 4K memory budget | Real-time visual understanding | StreamingBench | 76.4 | [InfiniPot-V Table 4](https://arxiv.org/pdf/2506.15745) |
 | MuKV | LLaVA-OV-7B; 0.5 FPS; 59K memory tokens per 300 frames | Real-time visual understanding | All | 64.4 | [MuKV Table 1](https://arxiv.org/pdf/2605.22269) |
 | SimpleStream | Qwen3-VL-8B + 4 recent frames; 1 FPS causal prefix | RTVU accuracy | StreamingBench RTVU | 80.59 | [SimpleStream Table 1](https://arxiv.org/pdf/2604.02317) |
+| WeaveTime | LLaVA-OV-7B; 1 FPS; multi-turn evaluation | Real-time visual understanding | Real-Time AVG | 72.13 | [WeaveTime Table 2](https://openaccess.thecvf.com/content/CVPR2026/papers/Zhang_WeaveTime_Streaming_from_Earlier_Frames_into_Emergent_Memory_in_VideoLLMs_CVPR_2026_paper.pdf) |
+| WeaveTime | Qwen2-VL-7B; 1 FPS; multi-turn evaluation | Real-time visual understanding | Real-Time AVG | 75.39 | [WeaveTime Table 2](https://openaccess.thecvf.com/content/CVPR2026/papers/Zhang_WeaveTime_Streaming_from_Earlier_Frames_into_Emergent_Memory_in_VideoLLMs_CVPR_2026_paper.pdf) |
+| STC-Cacher & Pruner | LLaVA-OneVision-7B + ReKV; 0.5 FPS | Real-time visual understanding | AVG | 65.2 | [STC Table 2](https://openaccess.thecvf.com/content/CVPR2026/papers/Wang_Accelerating_Streaming_Video_Large_Language_Models_via_Hierarchical_Token_Compression_CVPR_2026_paper.pdf) |
+| OASIS | Qwen3-VL-8B; 0.5 FPS; official All Context setting | Real-time visual understanding | Real-Time All | 78.22 | [OASIS Table 2](https://openaccess.thecvf.com/content/CVPR2026/papers/Liang_OASIS_On-Demand_Hierarchical_Event_Memory_for_Streaming_Video_Reasoning_CVPR_2026_paper.pdf) |
 
 ### OVO-Bench
 
-Metric: observed-only streaming evaluation with `OVO RT Avg.`, `OVO Bwd Avg.`, and `OVO Avg.`.
+Metric handling varies by paper.
+The first table keeps the observed-only aggregate used by SimpleStream, with `OVO RT Avg.`, `OVO Bwd Avg.`, and `OVO Avg.`.
 
 | Method / Paper | Backbone or Setting | OVO RT Avg. | OVO Bwd Avg. | OVO Avg. | Source |
 | --- | --- | ---: | ---: | ---: | --- |
@@ -83,6 +89,27 @@ Metric: observed-only streaming evaluation with `OVO RT Avg.`, `OVO Bwd Avg.`, a
 | HERMES-7B | 1 FPS; Qwen2.5-VL-7B + HERMES 4K tokens | 69.0 | 49.4 | 59.20 | [SimpleStream Table 1](https://arxiv.org/pdf/2604.02317) |
 | SimpleStream | Qwen2.5-VL-7B + 4 recent frames | 78.4 | 51.9 | 65.13 | [SimpleStream Table 1](https://arxiv.org/pdf/2604.02317) |
 | SimpleStream | Qwen3-VL-8B + 4 recent frames | 81.4 | 54.0 | 67.70 | [SimpleStream Table 1](https://arxiv.org/pdf/2604.02317) |
+
+Other recent papers report only selected OVO-Bench tracks or use a paper-specific causal protocol.
+Their results are kept in a separate table rather than filling a synthetic overall average.
+
+| Method / Paper | Backbone or Setting | Reported OVO-Bench Metrics | Source |
+| --- | --- | --- | --- |
+| StreamingVLM | Qwen2.5-VL-7B; streaming SFT; VQA evaluation | Realtime: 61.96 | [StreamingVLM Table 3](https://arxiv.org/pdf/2510.09608) |
+| WeaveTime | LLaVA-OV-7B; 1 FPS; multi-turn evaluation | Real-Time AVG: 68.82 | [WeaveTime Table 2](https://openaccess.thecvf.com/content/CVPR2026/papers/Zhang_WeaveTime_Streaming_from_Earlier_Frames_into_Emergent_Memory_in_VideoLLMs_CVPR_2026_paper.pdf) |
+| WeaveTime | Qwen2-VL-7B; 1 FPS; multi-turn evaluation | Real-Time AVG: 66.28 | [WeaveTime Table 2](https://openaccess.thecvf.com/content/CVPR2026/papers/Zhang_WeaveTime_Streaming_from_Earlier_Frames_into_Emergent_Memory_in_VideoLLMs_CVPR_2026_paper.pdf) |
+| STC-Cacher & Pruner | LLaVA-OneVision-7B + ReKV; 0.5 FPS | Real-Time: 62.5; Backward: 63.3; Forward: 52.0 | [STC Table 1](https://openaccess.thecvf.com/content/CVPR2026/papers/Wang_Accelerating_Streaming_Video_Large_Language_Models_via_Hierarchical_Token_Compression_CVPR_2026_paper.pdf) |
+| OASIS | Qwen2.5-VL-7B; 0.5 FPS | Perception: 67.26; Backward: 52.61 | [OASIS Table 1](https://openaccess.thecvf.com/content/CVPR2026/papers/Liang_OASIS_On-Demand_Hierarchical_Event_Memory_for_Streaming_Video_Reasoning_CVPR_2026_paper.pdf) |
+| OASIS | Qwen3-VL-8B; 0.5 FPS | Perception: 78.14; Backward: 57.21 | [OASIS Table 1](https://openaccess.thecvf.com/content/CVPR2026/papers/Liang_OASIS_On-Demand_Hierarchical_Event_Memory_for_Streaming_Video_Reasoning_CVPR_2026_paper.pdf) |
+
+### Inf-Streams-Eval
+
+Metric: GPT-5 pairwise preference against a named baseline, with access to reference commentary.
+This is a dense continuous-commentary evaluation, not an accuracy score and not directly comparable with streaming VideoQA tables.
+
+| Method / Paper | Setting | Comparison | Win Rate | Source |
+| --- | --- | --- | ---: | --- |
+| StreamingVLM | Infinite streaming mode; complete sports games average 2.12 hours | vs. GPT-4o mini in 100-second chunks | 66.18% | [StreamingVLM Table 1](https://arxiv.org/pdf/2510.09608) |
 
 ### StreamBench
 
@@ -100,14 +127,15 @@ Metrics: `Sco.`, `Acc.`, `Coh.`, and `RPD`; the full paper also reports six-task
 
 | Benchmark | What It Mainly Tests | Papers Using It |
 | --- | --- | --- |
-| **MLVU** | Long-video multiple-choice understanding. Often used as a compact proxy for long-context video reasoning. | **ReKV**, **StreamMem**, **LiveVLM**, **StreamingTOM**, **InfiniPot-V**, **AdaVideoRAG**, **MuKV** |
-| **Video-MME** | General long-video multimodal understanding across short, medium, and long videos. Papers often report the no-subtitle setting. | **StreamMem**, **LiveVLM**, **StreamingTOM**, **InfiniPot-V**, **AdaVideoRAG**, **ViG-RAG**, **MuKV** |
-| **EgoSchema** | Long-range egocentric video reasoning. Useful for memory and temporal reasoning evaluation. | **ReKV**, **StreamMem**, **StreamingTOM**, **InfiniPot-V**, **MuKV** |
-| **LongVideoBench** | Long-video QA with stronger pressure on long-context multimodal reasoning. | **LiveVLM**, **StreamingTOM**, **InfiniPot-V**, **ViG-RAG** |
+| **MLVU** | Long-video multiple-choice understanding. Often used as a compact proxy for long-context video reasoning. | **ReKV**, **StreamMem**, **LiveVLM**, **StreamingTOM**, **InfiniPot-V**, **AdaVideoRAG**, **MuKV**, **WeaveTime**, **STC** |
+| **Video-MME** | General long-video multimodal understanding across short, medium, and long videos. Papers often report the no-subtitle setting. | **StreamMem**, **LiveVLM**, **StreamingTOM**, **InfiniPot-V**, **AdaVideoRAG**, **ViG-RAG**, **MuKV**, **StreamingVLM**, **STC** |
+| **EgoSchema** | Long-range egocentric video reasoning. Useful for memory and temporal reasoning evaluation. | **ReKV**, **StreamMem**, **StreamingTOM**, **InfiniPot-V**, **MuKV**, **STC** |
+| **LongVideoBench** | Long-video QA with stronger pressure on long-context multimodal reasoning. | **LiveVLM**, **StreamingTOM**, **InfiniPot-V**, **ViG-RAG**, **StreamingVLM** |
+| **HourVideo** | Hour-scale egocentric video QA over videos lasting 20–120 minutes. | **OASIS** |
 | **HiVU** | Hierarchical long-video benchmark for knowledge-rich videos. It separates questions into different reasoning levels, making it useful for adaptive VideoRAG evaluation. | **AdaVideoRAG** |
 | **LongerVideos** | Long-form and multi-video benchmark used to test retrieval and reasoning over extended videos, especially for graph-RAG style methods. | **ViG-RAG** |
 | **ActivityNet-QA** | Open-ended video QA with longer activity videos. | **ReKV**, **StreamChat** |
-| **QAEGO4D** | Egocentric long-video QA. | **ReKV** |
+| **QAEGO4D** | Egocentric long-video QA. | **ReKV**, **WeaveTime** |
 | **CG-Bench / CGBench** | Clue-grounded long-video QA, useful for retrieval-heavy methods. | **ReKV**, **rLiVS** |
 | **MovieChat** | Long movie/video understanding. | **rLiVS** |
 | **VS-Ego / VS-Movie** | Offline long-video evaluation around egocentric and movie scenarios. | **rLiVS** |
@@ -126,6 +154,8 @@ Metric: accuracy. Most streaming-memory papers report a single MLVU score, while
 | AdaVideoRAG | VideoLLaMA3-7B; 1 FPS; 180 frames | MLVU_test AVG | 53.2 | [AdaVideoRAG Table 1](https://arxiv.org/pdf/2506.13589) |
 | MuKV | LLaVA-OV-7B; 0.5 FPS; 5.9K memory tokens | MLVU | 67.8 | [MuKV Table 9](https://arxiv.org/pdf/2605.22269) |
 | MuKV | Qwen3-VL-4B; 0.5 FPS; 5.9K memory tokens | MLVU | 66.0 | [MuKV Table 9](https://arxiv.org/pdf/2605.22269) |
+| WeaveTime C2F | LLaVA-OV-7B + ReKV; retrieval ablation | MLVU Acc. | 68.9 | [WeaveTime Table 4](https://openaccess.thecvf.com/content/CVPR2026/papers/Zhang_WeaveTime_Streaming_from_Earlier_Frames_into_Emergent_Memory_in_VideoLLMs_CVPR_2026_paper.pdf) |
+| STC-Cacher & Pruner | LLaVA-OneVision-7B + ReKV; offline evaluation | MLVU-dev | 67.0 | [STC Table 3](https://openaccess.thecvf.com/content/CVPR2026/papers/Wang_Accelerating_Streaming_Video_Large_Language_Models_via_Hierarchical_Token_Compression_CVPR_2026_paper.pdf) |
 
 ### Video-MME
 
@@ -140,6 +170,8 @@ Metric: accuracy-style Video-MME scores. Subtitle settings and split labels diff
 | AdaVideoRAG | VideoLLaMA3-7B; 1 FPS; 180 frames | subtitle setting not stated | 80.3 | 65.4 | 59.8 | 68.5 | [AdaVideoRAG Table 2](https://arxiv.org/pdf/2506.13589) |
 | ViG-RAG | LLaVA-Video-72B; 32 frames; text 2.1K | subtitle setting not stated | 79.3 | 71.1 | 72.8 | 74.4 | [ViG-RAG Table 2](https://ojs.aaai.org/index.php/AAAI/article/download/36963/40925) |
 | MuKV | Qwen3-VL-4B; 0.5 FPS; 5.9K memory tokens | subtitle setting not restated | - | 61.8 | 51.0 | 63.6 | [MuKV Table 9](https://arxiv.org/pdf/2605.22269) |
+| StreamingVLM | Qwen2.5-VL-7B; streaming SFT | w/o subtitles | - | - | - | 65.10 | [StreamingVLM Table 3](https://arxiv.org/pdf/2510.09608) |
+| STC-Cacher & Pruner | LLaVA-OneVision-7B + ReKV; offline evaluation | subtitle setting not restated | 67.3 | 53.9 | 48.3 | 56.5 | [STC Table 3](https://openaccess.thecvf.com/content/CVPR2026/papers/Wang_Accelerating_Streaming_Video_Large_Language_Models_via_Hierarchical_Token_Compression_CVPR_2026_paper.pdf) |
 
 ### EgoSchema
 
@@ -152,6 +184,7 @@ Metric: accuracy. StreamMem, StreamingTOM, and InfiniPot-V explicitly use the of
 | StreamingTOM | LLaVA-OV-7B; 0.5/0.2 FPS | 63.7 | [StreamingTOM Table 1](https://arxiv.org/pdf/2510.18269) |
 | InfiniPot-V | LLaVA-Next-7B; 128 frames; 6K budget | 65.8 | [InfiniPot-V Table 1](https://arxiv.org/pdf/2506.15745) |
 | MuKV | Qwen3-VL-4B; 0.5 FPS; 5.9K memory tokens | 67.0 | [MuKV Table 9](https://arxiv.org/pdf/2605.22269) |
+| STC-Cacher & Pruner | LLaVA-OneVision-7B + ReKV; offline evaluation | 59.0 | [STC Table 3](https://openaccess.thecvf.com/content/CVPR2026/papers/Wang_Accelerating_Streaming_Video_Large_Language_Models_via_Hierarchical_Token_Compression_CVPR_2026_paper.pdf) |
 
 ### LongVideoBench
 
@@ -163,6 +196,17 @@ Metric: accuracy-style LongVideoBench / LVB score. ViG-RAG discusses LongVideoBe
 | StreamingTOM | LLaVA-OV-7B; 0.5 FPS | Accuracy | 56.3 | [StreamingTOM Table 5](https://arxiv.org/pdf/2510.18269) |
 | InfiniPot-V | Qwen-2-VL-7B; 768 frames; 6K budget | LVB | 58.4 | [InfiniPot-V Table 1](https://arxiv.org/pdf/2506.15745) |
 | InfiniPot-V | LLaVA-Next-7B; 128 frames; 6K budget | LVB | 60.9 | [InfiniPot-V Table 1](https://arxiv.org/pdf/2506.15745) |
+| StreamingVLM | Qwen2.5-VL-7B; streaming SFT | LongVideoBench | 59.00 | [StreamingVLM Table 3](https://arxiv.org/pdf/2510.09608) |
+
+### HourVideo
+
+Metric: overall accuracy on the hour-scale egocentric benchmark.
+OASIS reports this result in its supplementary long-horizon evaluation rather than its main benchmark table.
+
+| Method / Paper | Backbone or Setting | Accuracy | Source |
+| --- | --- | ---: | --- |
+| Qwen3-VL-8B | OASIS reproduction baseline | 35.11 | [OASIS Supplementary Table 7](https://openaccess.thecvf.com/content/CVPR2026/supplemental/Liang_OASIS_On-Demand_Hierarchical_Event_Memory_for_Streaming_Video_Reasoning_CVPR_2026_supplemental.pdf) |
+| OASIS | Qwen3-VL-8B + hierarchical event memory | 37.35 | [OASIS Supplementary Table 7](https://openaccess.thecvf.com/content/CVPR2026/supplemental/Liang_OASIS_On-Demand_Hierarchical_Event_Memory_for_Streaming_Video_Reasoning_CVPR_2026_supplemental.pdf) |
 
 ### HiVU
 
@@ -206,6 +250,7 @@ Metric: `QaEgo4D_test-mc` accuracy. ReKV also reports retrieval recall in a sepa
 | ReKV | LLaVA-OV-0.5B; 0.5 FPS -> 64 frames | 50.0 (+7.4) | [ReKV Table 4](https://arxiv.org/pdf/2503.00540) |
 | LLaVA-OV-7B | Base model; 64 frames | 52.8 | [ReKV Table 4](https://arxiv.org/pdf/2503.00540) |
 | ReKV | LLaVA-OV-7B; 0.5 FPS -> 64 frames | 56.0 (+3.2) | [ReKV Table 4](https://arxiv.org/pdf/2503.00540) |
+| WeaveTime C2F | LLaVA-OV-7B + ReKV; retrieval ablation | 55.2 | [WeaveTime Table 4](https://openaccess.thecvf.com/content/CVPR2026/papers/Zhang_WeaveTime_Streaming_from_Earlier_Frames_into_Emergent_Memory_in_VideoLLMs_CVPR_2026_paper.pdf) |
 
 ### CG-Bench / CGBench
 
