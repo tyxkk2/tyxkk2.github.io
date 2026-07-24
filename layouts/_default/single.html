@@ -8,11 +8,16 @@
 {{- $scratch := newScratch -}}
 {{- $decorCandidate := .Params.decor_image | default (site.Params.defaultPostDecorImage | default "images/avatar.jpg") -}}
 {{- with resources.Get $decorCandidate -}}
-  {{- $scratch.Set "decorURL" .RelPermalink -}}
+  {{- $decorImage := .Fit "1280x1800 webp q82" -}}
+  {{- $scratch.Set "decorURL" $decorImage.RelPermalink -}}
+  {{- $scratch.Set "decorWidth" $decorImage.Width -}}
+  {{- $scratch.Set "decorHeight" $decorImage.Height -}}
 {{- else -}}
   {{- $scratch.Set "decorURL" ($decorCandidate | relURL) -}}
 {{- end -}}
 {{- $decorURL := $scratch.Get "decorURL" -}}
+{{- $decorWidth := $scratch.Get "decorWidth" -}}
+{{- $decorHeight := $scratch.Get "decorHeight" -}}
 
 <div class="post-reading-shell{{ if $hasToc }} has-toc{{ end }}">
   {{- if $hasToc }}
@@ -93,7 +98,16 @@
   <aside class="post-reading-aside post-reading-aside--decor" aria-hidden="true">
     <div class="reading-visual">
       <div class="reading-visual__media">
-        <img src="{{ $decorURL }}" alt="" loading="lazy">
+        <picture>
+          <source media="(min-width: 1281px)" srcset="{{ $decorURL }}" type="image/webp">
+          <img
+            src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+            alt=""
+            loading="lazy"
+            decoding="async"
+            {{- with $decorWidth }} width="{{ . }}"{{ end }}
+            {{- with $decorHeight }} height="{{ . }}"{{ end }}>
+        </picture>
       </div>
     </div>
   </aside>
