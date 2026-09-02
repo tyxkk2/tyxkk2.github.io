@@ -73,6 +73,8 @@
   };
 
   const refreshActive = () => {
+    if (compactToc.matches && tocDetails?.open) return;
+
     const visibleHeadings = headings
       .filter((heading) => heading.getBoundingClientRect().top <= 140)
       .sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top);
@@ -109,13 +111,29 @@
 
   if (tocDetails) {
     tocDetails.addEventListener("toggle", () => {
-      if (!tocDetails.open || !activeId) return;
+      if (!tocDetails.open) return;
+
+      const hash = decodeURIComponent(window.location.hash.slice(1));
+      if (hash && linkById.has(hash)) setActive(hash);
+      if (!activeId) return;
+
       window.requestAnimationFrame(() => scrollPanelToLink(linkById.get(activeId)));
     });
 
     tocLinks.forEach((link) => {
       link.addEventListener("click", () => {
-        if (compactToc.matches) tocDetails.removeAttribute("open");
+        if (!compactToc.matches) return;
+
+        const id = decodeURIComponent(link.getAttribute("href").slice(1));
+        tocDetails.removeAttribute("open");
+        setActive(id);
+
+        const syncTarget = () => setActive(id);
+        if ("onscrollend" in window) {
+          window.addEventListener("scrollend", syncTarget, { once: true });
+        } else {
+          window.setTimeout(syncTarget, 800);
+        }
       }, { capture: true });
     });
   }
