@@ -3,8 +3,8 @@
 | Field | Value |
 | --- | --- |
 | Status | `active` |
-| Current phase | `F0 — Source ground truth and disambiguation` |
-| Next action | Create `docs/research/streaming-video-lmm-sources.md` and seed it with the canonical sources, aliases, versions, venue status, maturity, and existing/target post for all P0 papers and every known name collision. |
+| Current phase | `F1 — Series foundation and development overview` |
+| Next action | Create the source-backed outline and setting/timeline comparison frame in `content/posts/StreamingVideoLMM-Development/index.md`, using the F0 ledger before drafting narrative prose. |
 | Last updated | 2026-09-02 |
 | Baseline observed before plan creation | `e38b12b` on `main` |
 | Research-context cutoff | 2026-09-02 |
@@ -92,8 +92,8 @@ or project sources even when the research-context report already contains them.
 
 | Phase | Priority | Status | Depends on | Primary outcome |
 | --- | --- | --- | --- | --- |
-| F0 | P0 | `in_progress` | — | Canonical source ledger and naming/version ground truth |
-| F1 | P0 | `not_started` | F0 | Development overview and discoverable series hub |
+| F0 | P0 | `done` | — | Canonical source ledger and naming/version ground truth |
+| F1 | P0 | `in_progress` | F0 | Development overview and discoverable series hub |
 | F2 | P0 | `not_started` | F0, F1 | Bounded-memory evolution and expanded ReKV note |
 | F3 | P0 | `not_started` | F0, F1 | Set-wise retention article and Pipeline v2 |
 | F4 | P1 | `not_started` | F0, F1 | Structured long-term state comparison |
@@ -157,8 +157,10 @@ Questions` section rather than only paraphrasing the paper.
 
 ## F0 — Source Ground Truth and Disambiguation
 
-**Status:** `in_progress`  
-**Priority:** P0  
+**Status:** `done`
+
+**Priority:** P0
+
 **Depends on:** none
 
 ### Outcome
@@ -175,12 +177,12 @@ paper identity, maturity, or version from filenames and secondary prose.
 
 ### Work packages
 
-- [ ] Define ledger columns: canonical title, method alias, identifier, first
+- [x] Define ledger columns: canonical title, method alias, identifier, first
       public date, current version, official venue, primary URL, official code or
       project URL, maturity, existing post, target article, last verified.
-- [ ] Seed every P0 source used by F1, F2, F3, F6, and F7.
-- [ ] Add existing-site papers so old and new coverage can be compared.
-- [ ] Record at least these collisions and drifts:
+- [x] Seed every P0 source used by F1, F2, F3, F6, and F7.
+- [x] Add existing-site papers so old and new coverage can be compared.
+- [x] Record at least these collisions and drifts:
   - two StreamChat papers (`2412.08646` and `2501.13468`);
   - Flash-VStream 2024 and 2025;
   - LiveVLM v1 and v2/DAC 2026;
@@ -189,9 +191,9 @@ paper identity, maturity, or version from filenames and secondary prose.
   - ACL StreamingEval versus the similarly named Streaming-Eval harness;
   - official paper titles versus method names for SelectStream, SAVEMem,
     CausalMem, NovaCov, and StreamEMS.
-- [ ] Mark very recent StreamTTT, StreamEMS, D-HSM, and StreamScout work as
+- [x] Mark very recent StreamTTT, StreamEMS, D-HSM, and StreamScout work as
       frontier/watchlist unless stronger publication evidence appears.
-- [ ] Add report omissions that materially affect the history: VideoLLaMB,
+- [x] Add report omissions that materially affect the history: VideoLLaMB,
       StreamChat (`2412.08646`), Dispider, StreamMind, ProVideLLM, StreamRAG,
       Streamo, and optionally FlexMem.
 
@@ -211,13 +213,17 @@ paper identity, maturity, or version from filenames and secondary prose.
 
 ### Resume note
 
-Preliminary verification was completed during plan creation, but no repository
-ledger exists yet. Begin by creating the ledger, not by drafting a public post.
+Completed in `eaa0937` and `be31611`. Later phases must use the canonical keys,
+resource-boundary labels, protocol map, and coverage actions in
+`docs/research/streaming-video-lmm-sources.md` rather than re-inferring them from
+post filenames.
 
 ## F1 — Series Foundation and Development Overview
 
-**Status:** `not_started`  
-**Priority:** P0  
+**Status:** `in_progress`
+
+**Priority:** P0
+
 **Depends on:** F0
 
 ### Outcome
@@ -277,8 +283,9 @@ duplicate the stage-by-stage mechanics of the pipeline survey.
 
 ### Resume note
 
-Do not start this article until the F0 identifiers, dates, and venue states needed
-by its timeline are stable.
+F0 is complete. Start with the hub's setting card, six-path outline, and compact
+timeline; defer polished narrative and index promotion until those claims trace
+cleanly to the ledger.
 
 ## F2 — Bounded Memory Evolution
 
@@ -740,6 +747,9 @@ Initial watchlist:
 | 2026-09-02 | Use a curated hub plus the existing taxonomy instead of adding a `series` taxonomy. | Lower implementation risk and consistent with the current PaperMod site. | Use the `streaming-video-lmm` tag and reciprocal manual navigation. |
 | 2026-09-02 | Treat retrieval-behavior preservation as a falsifiable research hypothesis. | The source report's claim is a useful direction but not established field consensus. | F1–F3 must use cautious, testable language. |
 | 2026-09-02 | Prefer thematic comparisons over one post per recent preprint. | Reduces duplication and makes conceptual development clearer. | Only high-value paper notes such as StreamArena and StreamOPD are standalone in the initial scope. |
+| 2026-09-02 | Prefer the formal proceedings title while preserving arXiv title/version drift and stable collision keys. | StreamChat, Flash-VStream, LiveVLM, StreamingEval, WeaveTime, and related names cannot be safely resolved from short names alone. | Every later draft starts from the F0 disambiguation registry. |
+| 2026-09-02 | Keep bibliographic maturity separate from frontier routing. | A recent preprint is still a preprint; recency controls how strongly it is used, not what kind of publication it is. | StreamTTT, StreamEMS, D-HSM, StreamScout, and other emerging work remain on the watchlist until stronger evidence appears. |
+| 2026-09-02 | Audit model state, active read state, archives, indexes, and raw evidence separately. | “Bounded memory” otherwise hides growing KV, caption, snapshot, keyframe, or source stores. | F1–F7 use the F0 resource classes and cannot infer whole-system `O(1)` storage from a capped prompt or GPU cache. |
 
 ## Work Log
 
@@ -748,5 +758,7 @@ small related commit group.
 
 | Date | Phase | Commit(s) | Validation | Result / next step |
 | --- | --- | --- | --- | --- |
-| 2026-09-02 | Planning | uncommitted at creation | `git status` inspected; no Hugo build required for planning text | Added the active plan and repository agent contract. Next: F0 source ledger. |
-
+| 2026-09-02 | Planning | `62b21d5` | `git diff --check`; no Hugo build required for internal planning text | Added the active plan and repository agent contract. |
+| 2026-09-02 | F0 | `eaa0937` | First-party paper/venue verification; `git diff --check`; canonical table shape checked | Added the 72-source canonical register, maintenance contract, maturity vocabulary, and initial routing. |
+| 2026-09-02 | F0 | `be31611` | `git diff --check`; all Markdown table rows structurally checked; all 20 local coverage links resolved | Added resource-boundary and benchmark protocol audits, stable collision keys, title/version drift rules, the existing-site coverage map, and fixed F1–F7 targets. |
+| 2026-09-02 | F0 → F1 | this commit | F0 acceptance criteria audited; internal documentation only, so Hugo build and visual QA are not applicable | Marked F0 done and activated F1 with one concrete outline-first action. |
