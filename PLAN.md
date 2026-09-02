@@ -3,8 +3,8 @@
 | Field | Value |
 | --- | --- |
 | Status | `active` |
-| Current phase | `F1 — Series foundation and development overview` |
-| Next action | Create the source-backed outline and setting/timeline comparison frame in `content/posts/StreamingVideoLMM-Development/index.md`, using the F0 ledger before drafting narrative prose. |
+| Current phase | `F2 — Bounded memory evolution` |
+| Next action | Expand `content/posts/ReKV/index.md` with the F0 setting card, a write/read/archive split, `O(T)` archive accounting, and the position-reconstruction caveat before drafting the F2 thematic article. |
 | Last updated | 2026-09-02 |
 | Baseline observed before plan creation | `e38b12b` on `main` |
 | Research-context cutoff | 2026-09-02 |
@@ -93,8 +93,8 @@ or project sources even when the research-context report already contains them.
 | Phase | Priority | Status | Depends on | Primary outcome |
 | --- | --- | --- | --- | --- |
 | F0 | P0 | `done` | — | Canonical source ledger and naming/version ground truth |
-| F1 | P0 | `in_progress` | F0 | Development overview and discoverable series hub |
-| F2 | P0 | `not_started` | F0, F1 | Bounded-memory evolution and expanded ReKV note |
+| F1 | P0 | `done` | F0 | Development overview and discoverable series hub |
+| F2 | P0 | `in_progress` | F0, F1 | Bounded-memory evolution and expanded ReKV note |
 | F3 | P0 | `not_started` | F0, F1 | Set-wise retention article and Pipeline v2 |
 | F4 | P1 | `not_started` | F0, F1 | Structured long-term state comparison |
 | F5 | P1 | `not_started` | F0, F1 | Verifiable multi-key Video RAG comparison |
@@ -220,7 +220,7 @@ post filenames.
 
 ## F1 — Series Foundation and Development Overview
 
-**Status:** `in_progress`
+**Status:** `done`
 
 **Priority:** P0
 
@@ -248,23 +248,23 @@ duplicate the stage-by-stage mechanics of the pipeline survey.
 
 ### Work packages
 
-- [ ] Introduce four query-visibility settings.
-- [ ] Separate memory distance, readiness delay, and wall-clock system latency.
-- [ ] Separate active GPU, online index, CPU/disk archive, and total retained
+- [x] Introduce four query-visibility settings.
+- [x] Separate memory distance, readiness delay, and wall-clock system latency.
+- [x] Separate active GPU, online index, CPU/disk archive, and total retained
       information budgets.
-- [ ] Explain six paths:
+- [x] Explain six paths:
   - offline long-video compression to native streaming;
   - growing KV archives to bounded online state;
   - flat tokens to structured event/entity/object state;
   - single-key retrieval to verifiable multi-key Video RAG;
   - passive QA to readiness, thinking, and near-full-duplex interaction;
   - query-point accuracy to asynchronous hour-scale system evaluation.
-- [ ] Add a compact 2023–2026 timeline using canonical dates from F0.
-- [ ] Include missing-but-important nodes from F0 without turning each into a
+- [x] Add a compact 2023–2026 timeline using canonical dates from F0.
+- [x] Include missing-but-important nodes from F0 without turning each into a
       standalone digest.
-- [ ] End with the open hypothesis: preserving future query-to-evidence retrieval
+- [x] End with the open hypothesis: preserving future query-to-evidence retrieval
       behavior under a bounded online index.
-- [ ] Add a series map linking existing notes and planned F2–F7 articles.
+- [x] Add a series map linking existing notes and planned F2–F7 articles.
 
 ### Acceptance criteria
 
@@ -283,14 +283,18 @@ duplicate the stage-by-stage mechanics of the pipeline survey.
 
 ### Resume note
 
-F0 is complete. Start with the hub's setting card, six-path outline, and compact
-timeline; defer polished narrative and index promotion until those claims trace
-cleanly to the ledger.
+Completed in `15e89e5`, `c2133f8`, `0811c9f`, and `cb89191`. The hub, featured
+index entry, manual series navigation, responsive reading layout, source
+traceability, exact Hugo build, and desktop/mobile visual gates all passed.
+Continue in F2 without redrafting the hub; update it later only when a focused
+article changes the map.
 
 ## F2 — Bounded Memory Evolution
 
-**Status:** `not_started`  
-**Priority:** P0  
+**Status:** `in_progress`
+
+**Priority:** P0
+
 **Depends on:** F0, F1
 
 ### Outcome
@@ -348,7 +352,9 @@ Core comparison:
 ### Resume note
 
 Preserve the existing ReKV URL. Improve the current article in place rather than
-creating a second ReKV summary.
+creating a second ReKV summary. Start with the setting card, write/read/archive
+split, `O(T)` archive accounting, and position-reconstruction caveat; do not
+draft the thematic comparison until those claims trace cleanly to F0.
 
 ## F3 — Set-wise Retention and Pipeline v2
 
@@ -750,6 +756,9 @@ Initial watchlist:
 | 2026-09-02 | Prefer the formal proceedings title while preserving arXiv title/version drift and stable collision keys. | StreamChat, Flash-VStream, LiveVLM, StreamingEval, WeaveTime, and related names cannot be safely resolved from short names alone. | Every later draft starts from the F0 disambiguation registry. |
 | 2026-09-02 | Keep bibliographic maturity separate from frontier routing. | A recent preprint is still a preprint; recency controls how strongly it is used, not what kind of publication it is. | StreamTTT, StreamEMS, D-HSM, StreamScout, and other emerging work remain on the watchlist until stronger evidence appears. |
 | 2026-09-02 | Audit model state, active read state, archives, indexes, and raw evidence separately. | “Bounded memory” otherwise hides growing KV, caption, snapshot, keyframe, or source stores. | F1–F7 use the F0 resource classes and cannot infer whole-system `O(1)` storage from a capped prompt or GPU cache. |
+| 2026-09-02 | Use four query regimes, three clocks, four resource boundaries, and evidence recoverability as the public comparison contract. | The word “streaming” and isolated accuracy or latency numbers otherwise collapse incompatible problems and budgets. | The F1 hub defines the frame; F2–F7 reuse it and avoid an unsupported cross-paper leaderboard. |
+| 2026-09-02 | Use manual `relref` series guides, a curated hub map, and the `streaming-video-lmm` tag. | These fit the current Hugo architecture and keep navigation explicit without adding a global taxonomy. | Every materially touched series article gets reciprocal navigation through existing URLs. |
+| 2026-09-02 | Prefer formal proceedings while retaining cutoff-dated preprints and acceptance evidence when no proceedings record is available. | Publication maturity and technical relevance are separate, and several 2026 nodes remain in transition. | Public summaries label maturity conservatively and route detailed protocol claims to focused notes. |
 
 ## Work Log
 
@@ -762,3 +771,8 @@ small related commit group.
 | 2026-09-02 | F0 | `eaa0937` | First-party paper/venue verification; `git diff --check`; canonical table shape checked | Added the 72-source canonical register, maintenance contract, maturity vocabulary, and initial routing. |
 | 2026-09-02 | F0 | `be31611` | `git diff --check`; all Markdown table rows structurally checked; all 20 local coverage links resolved | Added resource-boundary and benchmark protocol audits, stable collision keys, title/version drift rules, the existing-site coverage map, and fixed F1–F7 targets. |
 | 2026-09-02 | F0 → F1 | this commit | F0 acceptance criteria audited; internal documentation only, so Hugo build and visual QA are not applicable | Marked F0 done and activated F1 with one concrete outline-first action. |
+| 2026-09-02 | F1 | `15e89e5` | F0 ledger trace; independent claim/content review; Markdown table check; 57 external URLs and 20 unique local assets audited; Hugo Extended 0.160.1 build | Added the six-path development hub, setting contract, 2023–2026 timeline, frontier maturity labels, open hypothesis, and complete existing-note map. |
+| 2026-09-02 | F1 | `c2133f8` | Rendered hub, Pipeline, Benchmark, and `/posts/` links checked; desktop and 390px index layouts inspected | Added reciprocal series guides, canonical tag coverage, and the featured-series index entry. |
+| 2026-09-02 | F1 | `0811c9f` | 1280–1600px breakpoint matrix; 1366px, 390px, and wide-screen visual QA; direct and clicked hash targets; light/dark themes; browser console | Kept the article at 820px through common laptop widths, delayed the decor column to wide screens, and fixed compact-TOC anchor alignment with content-hashed script refresh. |
+| 2026-09-02 | F1 | `cb89191` | 390px `#series-map` click and reopen; heading top 139px versus 121px sticky header; `aria-current` and TOC scroll position; desktop direct hash; exact Hugo Extended 0.160.1 build | Kept compact-TOC focus synchronized with the final smooth-scroll target and preserved the active item when the panel reopens. |
+| 2026-09-02 | F1 → F2 | this commit | F1 acceptance criteria audited; exact Hugo Extended 0.160.1 production build generated 153 pages; `git diff --check` | Marked F1 done and activated the in-place ReKV expansion as the single F2 next action. |
