@@ -1,11 +1,18 @@
 +++
 date = '2026-04-27T02:10:00+08:00'
+lastmod = '2026-09-02T17:30:00-05:00'
 title = 'Long Streaming Video Understanding Pipeline'
 description = 'A pipeline view of recent long streaming video understanding papers.'
 categories = ["AI", "VLM", "KV cache", "summary"]
-tags = ["survey", "Video-LLM", "streaming", "long video", "retrieval", "compression"]
+tags = ["survey", "Video-LLM", "streaming", "long video", "retrieval", "compression", "streaming-video-lmm"]
 math = true
 +++
+
+> **Series guide.** This article is the stage-by-stage architecture map. Start
+> with the [development-history hub]({{% relref path="/posts/StreamingVideoLMM-Development" %}})
+> for the six research paths, and use the
+> [benchmark index]({{% relref path="/posts/StreamingVideoBenchmarks" %}}) for
+> evaluation settings and protocols.
 
 Related papers:
 

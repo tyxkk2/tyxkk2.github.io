@@ -1,13 +1,19 @@
 +++
 date = '2026-05-02T17:28:21+08:00'
-lastmod = '2026-07-24T02:11:12+08:00'
+lastmod = '2026-09-02T17:30:00-05:00'
 title = 'Benchmarks for Streaming Video Understanding'
 description = 'A short index of benchmarks used by recent streaming and long-video VLM papers.'
 categories = ["AI", "VLM", "summary"]
-tags = ["benchmark", "survey", "Video-LLM", "streaming", "long video", "StreamingBench", "OVO-Bench", "Inf-Streams-Eval", "MLVU", "Video-MME", "HiVU", "LongVideoBench", "HourVideo", "LongerVideos"]
+tags = ["benchmark", "survey", "Video-LLM", "streaming", "long video", "StreamingBench", "OVO-Bench", "Inf-Streams-Eval", "MLVU", "Video-MME", "HiVU", "LongVideoBench", "HourVideo", "LongerVideos", "streaming-video-lmm"]
 math = false
 decor_image = "images/bg2.png"
 +++
+
+> **Series guide.** This article is the evaluation-protocol index. Start with
+> the [development-history hub]({{% relref path="/posts/StreamingVideoLMM-Development" %}})
+> for the six research paths, and use the
+> [pipeline survey]({{% relref path="/posts/StreamingVLM-Pipeline" %}}) for the
+> stage-by-stage architecture view.
 
 This post is a small index for the benchmarks that appear repeatedly in recent streaming video / long-video VLM papers.
 
