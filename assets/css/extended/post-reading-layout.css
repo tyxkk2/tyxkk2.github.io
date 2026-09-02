@@ -168,7 +168,7 @@ body {
 
 /* ---------- Responsive ---------- */
 
-@media (max-width: 1280px) {
+@media (max-width: 1600px) {
   .post-reading-shell,
   .post-reading-shell.has-toc {
     grid-template-columns: minmax(220px, 240px) minmax(0, 820px);
@@ -262,5 +262,11 @@ body {
     margin-top: 0.55rem;
     padding: 0.2rem 0.25rem 0.45rem 0;
     overflow: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .post-reading-article .post-content :is(h1, h2, h3, h4, h5, h6) {
+    scroll-margin-top: calc(var(--header-height) * 2 + 1.2rem);
   }
 }

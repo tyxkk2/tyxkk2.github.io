@@ -1,4 +1,6 @@
-<script defer src="{{ "js/post-reading.js" | relURL }}"></script>
+{{- $readingScript := "js/post-reading.js" -}}
+{{- $readingScriptHash := md5 (readFile (printf "static/%s" $readingScript)) -}}
+<script defer src="{{ $readingScript | relURL }}?v={{ $readingScriptHash }}"></script>
 <script defer src="{{ "js/lightbox.js" | relURL }}"></script>
 {{- if .Param "math" -}}
 <link

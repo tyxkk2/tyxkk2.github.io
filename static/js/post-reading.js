@@ -100,6 +100,9 @@
   const initialHash = decodeURIComponent(window.location.hash.slice(1));
   if (initialHash && linkById.has(initialHash)) {
     setActive(initialHash);
+    window.requestAnimationFrame(() => {
+      document.getElementById(initialHash)?.scrollIntoView();
+    });
   } else {
     refreshActive();
   }
@@ -113,7 +116,7 @@
     tocLinks.forEach((link) => {
       link.addEventListener("click", () => {
         if (compactToc.matches) tocDetails.removeAttribute("open");
-      });
+      }, { capture: true });
     });
   }
 
