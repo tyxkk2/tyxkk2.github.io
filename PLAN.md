@@ -3,8 +3,8 @@
 | Field | Value |
 | --- | --- |
 | Status | `active` |
-| Current phase | `F2 — Bounded memory evolution` |
-| Next action | Expand `content/posts/ReKV/index.md` with the F0 setting card, a write/read/archive split, `O(T)` archive accounting, and the position-reconstruction caveat before drafting the F2 thematic article. |
+| Current phase | `F3 — Set-wise Retention and Pipeline v2` |
+| Next action | Draft the source-backed SAVEMem/CoRDS/NovaCov comparison matrix in `content/posts/SetWise-Streaming-Memory/index.md`, covering query visibility, memory unit, set objective, budget boundary, and guarantee assumptions, before updating Pipeline v2. |
 | Last updated | 2026-09-02 |
 | Baseline observed before plan creation | `e38b12b` on `main` |
 | Research-context cutoff | 2026-09-02 |
@@ -94,8 +94,8 @@ or project sources even when the research-context report already contains them.
 | --- | --- | --- | --- | --- |
 | F0 | P0 | `done` | — | Canonical source ledger and naming/version ground truth |
 | F1 | P0 | `done` | F0 | Development overview and discoverable series hub |
-| F2 | P0 | `in_progress` | F0, F1 | Bounded-memory evolution and expanded ReKV note |
-| F3 | P0 | `not_started` | F0, F1 | Set-wise retention article and Pipeline v2 |
+| F2 | P0 | `done` | F0, F1 | Bounded-memory evolution and expanded ReKV note |
+| F3 | P0 | `in_progress` | F0, F1 | Set-wise retention article and Pipeline v2 |
 | F4 | P1 | `not_started` | F0, F1 | Structured long-term state comparison |
 | F5 | P1 | `not_started` | F0, F1 | Verifiable multi-key Video RAG comparison |
 | F6 | P0 | `not_started` | F0, F1 | Real streaming evaluation and benchmark refresh |
@@ -291,7 +291,7 @@ article changes the map.
 
 ## F2 — Bounded Memory Evolution
 
-**Status:** `in_progress`
+**Status:** `done`
 
 **Priority:** P0
 
@@ -328,12 +328,12 @@ Core comparison:
 
 ### Work packages
 
-- [ ] Expand ReKV with a precise setting card, storage accounting, position
+- [x] Expand ReKV with a precise setting card, storage accounting, position
       reconstruction caveat, and relation to later work.
-- [ ] Distinguish write policy, read policy, and archive policy.
-- [ ] Compare bounded active memory with bounded total state.
-- [ ] Explain why current perception and distant retrieval compete for attention.
-- [ ] State retrieval-behavior preservation as a falsifiable proposal, not a field
+- [x] Distinguish write policy, read policy, and archive policy.
+- [x] Compare bounded active memory with bounded total state.
+- [x] Explain why current perception and distant retrieval compete for attention.
+- [x] State retrieval-behavior preservation as a falsifiable proposal, not a field
       consensus.
 
 ### Acceptance criteria
@@ -351,14 +351,17 @@ Core comparison:
 
 ### Resume note
 
-Preserve the existing ReKV URL. Improve the current article in place rather than
-creating a second ReKV summary. Start with the setting card, write/read/archive
-split, `O(T)` archive accounting, and position-reconstruction caveat; do not
-draft the thematic comparison until those claims trace cleanly to F0.
+Completed in `8e32d39`, `948c148`, and `5721a3d`. The expanded ReKV note now
+separates write, read, index, and archive costs; the thematic survey compares
+fixed-state methods under their actual query, resource, position, version, and
+delayed-query contracts. Reciprocal navigation, first-party claim review, Hugo
+Extended 0.160.1 build, and desktop/mobile visual gates passed. Continue in F3
+using the same resource-accounting and evidence-recoverability vocabulary.
 
 ## F3 — Set-wise Retention and Pipeline v2
 
-**Status:** `not_started`  
+**Status:** `in_progress`
+
 **Priority:** P0  
 **Depends on:** F0, F1
 
@@ -430,8 +433,10 @@ sample / segment
 
 ### Resume note
 
-The current pipeline post is valuable and should be updated in place. Preserve its
-URL and its input-operation-output style.
+F2 is complete. Begin with first-party method cards and a comparison matrix for
+SAVEMem, CoRDS, and NovaCov. Resolve their selection objectives, budget
+boundaries, and approximation assumptions before editing Pipeline v2. Preserve
+the existing Pipeline URL and its input-operation-output style.
 
 ## F4 — Structured Long-term State
 
@@ -759,6 +764,8 @@ Initial watchlist:
 | 2026-09-02 | Use four query regimes, three clocks, four resource boundaries, and evidence recoverability as the public comparison contract. | The word “streaming” and isolated accuracy or latency numbers otherwise collapse incompatible problems and budgets. | The F1 hub defines the frame; F2–F7 reuse it and avoid an unsupported cross-paper leaderboard. |
 | 2026-09-02 | Use manual `relref` series guides, a curated hub map, and the `streaming-video-lmm` tag. | These fit the current Hugo architecture and keep navigation explicit without adding a global taxonomy. | Every materially touched series article gets reciprocal navigation through existing URLs. |
 | 2026-09-02 | Prefer formal proceedings while retaining cutoff-dated preprints and acceptance evidence when no proceedings record is available. | Publication maturity and technical relevance are separate, and several 2026 nodes remain in transition. | Public summaries label maturity conservatively and route detailed protocol claims to focused notes. |
+| 2026-09-03 | Use LiveVLM v2 / DAC 2026 as the canonical bounded-state design and keep its VSB/PaR mechanism separate from the 2025 v1 chunk/FIFO design. | The arXiv revision materially changes both write and read mechanisms. | Later comparisons must label the version and must not transfer v1 mechanisms or results to v2. |
+| 2026-09-03 | Treat ProtoKV's `t0 + Δ` sweep as a controlled query-delay intervention rather than an exact evidence-age measurement. | The evaluated benchmarks lack last-decisive-evidence timestamps and the sweep uses filtered retrospective intersection subsets. | F3 and F6 must preserve this qualifier when discussing delayed evidence. |
 
 ## Work Log
 
@@ -776,3 +783,7 @@ small related commit group.
 | 2026-09-02 | F1 | `0811c9f` | 1280–1600px breakpoint matrix; 1366px, 390px, and wide-screen visual QA; direct and clicked hash targets; light/dark themes; browser console | Kept the article at 820px through common laptop widths, delayed the decor column to wide screens, and fixed compact-TOC anchor alignment with content-hashed script refresh. |
 | 2026-09-02 | F1 | `cb89191` | 390px `#series-map` click and reopen; heading top 139px versus 121px sticky header; `aria-current` and TOC scroll position; desktop direct hash; exact Hugo Extended 0.160.1 build | Kept compact-TOC focus synchronized with the final smooth-scroll target and preserved the active item when the panel reopens. |
 | 2026-09-02 | F1 → F2 | this commit | F1 acceptance criteria audited; exact Hugo Extended 0.160.1 production build generated 153 pages; `git diff --check` | Marked F1 done and activated the in-place ReKV expansion as the single F2 next action. |
+| 2026-09-03 | F2 | `8e32d39` | First-party ReKV paper/code audit; independent query, storage, and position review; `git diff --check`; exact Hugo build | Expanded ReKV with the setting card, write/read/archive split, `O(T)` archive and index accounting, and positional-repacking caveat. |
+| 2026-09-03 | F2 | `948c148` | First-party version and mechanism audit; independent factual review; `git diff --check`; exact Hugo build | Added the bounded-memory survey, resource table, delayed-query qualifiers, and retrieval-behavior hypothesis. |
+| 2026-09-03 | F2 | `5721a3d` | Reciprocal-link, tag, metadata, and `lastmod` audit; six new first-party URLs returned 200; Hugo Extended 0.160.1 build generated 154 pages; desktop/mobile article and navigation inspection; browser console | Connected the survey with the hub and related ReKV, InfiniPot-V, StreamMem, LiveVLM, MuKV, and WeaveTime notes. |
+| 2026-09-03 | F2 → F3 | this commit | F2 Research, Content, Integration, and Build gates audited | Marked F2 done and activated the source-matrix-first F3 action. |
