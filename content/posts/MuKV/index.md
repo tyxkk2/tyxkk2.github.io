@@ -1,18 +1,27 @@
 +++
 date = '2026-06-05T22:50:59+08:00'
-lastmod = '2026-06-08T15:26:57+08:00'
+lastmod = '2026-09-03T19:28:00-05:00'
 title = 'MuKV'
 description = 'Multi-grained KV-cache compression for long streaming VideoQA.'
 venue = 'CVPR 2026'
 categories = ["AI", "VLM", "paper", "KV cache"]
-tags = ["Video-LLM", "streaming", "long video", "retrieval", "compression", "KV cache", "MuKV"]
+tags = ["Video-LLM", "streaming", "long video", "retrieval", "compression", "KV cache", "MuKV", "streaming-video-lmm"]
 math = true
 decor_image = "images/bg2.png"
 +++
 
 Paper: [MuKV: Multi-Grained KV Cache Compression for Long Streaming Video Question-Answering](https://arxiv.org/abs/2605.22269)
 
+Proceedings: [CVPR 2026 Open Access](https://openaccess.thecvf.com/content/CVPR2026/html/Xiao_MuKV_Multi-Grained_KV_Cache_Compression_for_Long_Streaming_Video_Question-Answering_CVPR_2026_paper.html)
+
 Code: [IMBALDY/MuKV](https://github.com/IMBALDY/MuKV)
+
+> **Series guide.** A fixed per-question read can still sit on a growing
+> multi-grained archive. See the
+> [bounded-memory survey]({{% relref path="/posts/StreamingMemory-Retention" %}})
+> for that accounting and the
+> [development-history hub]({{% relref path="/posts/StreamingVideoLMM-Development" %}})
+> for the complete series.
 
 ## Background
 Long streaming VideoQA has a simple but painful constraint:
@@ -36,7 +45,8 @@ MuKV stores historical video KV cache at **three granularities**:
 - **frame-level KV** for the representative visual state;
 - **patch-level KV** for local region details.
 
-Then it controls memory growth with a **dual-signal KV-cache compression** module.
+Then it reduces the size of each written memory block with a **dual-signal
+KV-cache compression** module; the archive still grows as more blocks arrive.
 The compression score combines:
 - self-attention importance, which is already available during LLM prefill;
 - frequency-domain signal from key vectors, which helps identify visual variation and correct the positional bias of attention scores.

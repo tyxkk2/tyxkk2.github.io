@@ -1,17 +1,25 @@
 +++
 date = '2026-04-23T00:30:00+08:00'
-lastmod = '2026-06-08T15:26:57+08:00'
+lastmod = '2026-09-03T19:28:00-05:00'
 title = 'InfiniPot-V'
 description = 'Memory-Constrained KV Cache Compression for Streaming Video Understanding.'
 venue = 'NeurIPS 2025'
 categories = ["AI", "VLM", "paper", "KV cache"]
-tags = ["Video-LLM", "streaming", "compression", "InfiniPot-V"]
+tags = ["Video-LLM", "streaming", "compression", "InfiniPot-V", "streaming-video-lmm"]
 math = true
 +++
 
-Paper: [InfiniPot-V: Memory-Constrained KV Cache Compression for Streaming Video Understanding](https://arxiv.org/abs/2506.15745)
+Paper: [InfiniPot-V: Memory-Constrained KV Cache Compression for Streaming Video Understanding](https://proceedings.neurips.cc/paper_files/paper/2025/hash/caef5f5e658aa1f7565f063a2cd99726-Abstract-Conference.html)
 
-Code: [aiha-lab/InfiniPot-V](https://github.com/aiha-lab/InfiniPot-V)
+Preprint: [arXiv:2506.15745](https://arxiv.org/abs/2506.15745)
+
+Research reimplementation: [aiha-lab/InfiniPot-V](https://github.com/aiha-lab/InfiniPot-V)
+
+> **Series guide.** For why a fixed retained KV cache differs from a bounded
+> read over a growing archive, see the
+> [bounded-memory survey]({{% relref path="/posts/StreamingMemory-Retention" %}}).
+> The [development-history hub]({{% relref path="/posts/StreamingVideoLMM-Development" %}})
+> places this shift in the complete series.
 
 ## Background
 **Streaming video understanding** is more constrained than offline long-video understanding.

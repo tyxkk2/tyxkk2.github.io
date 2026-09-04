@@ -1,5 +1,6 @@
 +++
 date = '2026-09-02T17:11:52-05:00'
+lastmod = '2026-09-03T19:28:00-05:00'
 title = 'Streaming Video-LMM Is Not One SOTA Line: Six Development Paths from 2023 to 2026'
 description = 'Six development paths from long-video compression to bounded memory, proactive interaction, and system-level streaming evaluation.'
 categories = ["AI", "VLM", "summary"]
@@ -274,9 +275,11 @@ write exact per-layer video KV blocks with a sliding causal window, offload them
 then retrieve and reload relevant blocks after the question arrives. The model
 does not have to re-encode the video for every question, and the GPU read set can
 be controlled. The cost is a linearly growing RAM/disk archive and index, plus
-position reconstruction and I/O concerns. My shorter [ReKV note]({{% relref
-path="/posts/ReKV" %}}) will be expanded in the bounded-memory article planned
-for the next phase.
+position reconstruction and I/O concerns. The expanded
+[ReKV note]({{% relref path="/posts/ReKV" %}}) audits that storage contract in
+detail; the [bounded-memory survey]({{% relref
+path="/posts/StreamingMemory-Retention" %}}) compares it with fixed-state
+successors.
 
 The next turn moved irreversible selection into the streaming write path:
 
@@ -635,9 +638,10 @@ claim must be narrower and tested against those baselines.
 - [SimpleStream]({{% relref path="/posts/SimpleStream" %}})
 - [Qwen3-VL: backbone note]({{% relref path="/posts/Qwen3-VL" %}})
 
-### Planned thematic articles
+### Thematic articles
 
-- **Bounded streaming-memory evolution** — planned (F2).
+- [**Bounded streaming-memory evolution**]({{% relref path="/posts/StreamingMemory-Retention" %}})
+  — published in F2.
 - **Set-wise streaming-memory selection** — planned (F3).
 - **Structured long-term state** — planned (F4).
 - **Verifiable multi-key Video RAG** — planned (F5).

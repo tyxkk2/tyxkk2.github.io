@@ -1,11 +1,11 @@
 +++
 date = '2026-04-25T01:44:44+08:00'
-lastmod = '2026-06-08T15:26:57+08:00'
+lastmod = '2026-09-03T19:28:00-05:00'
 title = 'LiveVLM'
 description = 'Efficient Online Video Understanding via Streaming-Oriented KV Cache and Retrieval.'
 venue = 'DAC 2026'
 categories = ["AI", "VLM", "paper", "KV cache"]
-tags = ["Video-LLM", "streaming", "retrieval", "compression", "LiveVLM"]
+tags = ["Video-LLM", "streaming", "retrieval", "compression", "LiveVLM", "streaming-video-lmm"]
 # Set to true on posts that need LaTeX rendering.
 math = true
 +++
@@ -13,6 +13,19 @@ math = true
 Paper: [LiveVLM: Efficient Online Video Understanding via Streaming-Oriented KV Cache and Retrieval](https://arxiv.org/abs/2505.15269)
 
 Code: [sjtu-zhao-lab/LiveVLM](https://github.com/sjtu-zhao-lab/LiveVLM)
+
+Acceptance: [DAC 2026 program](https://63dac.conference-program.com/presentation/?id=RESEARCH670&sess=sess314)
+
+> **Version note.** This article follows the substantially revised arXiv v2
+> (2026-04-23) / DAC 2026 method: Vision Sink Bucketing and Position-agnostic KV
+> Retrieval. The 2025 v1 used a different chunk-compression and FIFO mechanism;
+> its results should not be mixed with the v2 design.
+
+> **Series guide.** For the distinction between bounded VSB state and
+> query-time PaR reads, see the
+> [bounded-memory survey]({{% relref path="/posts/StreamingMemory-Retention" %}}).
+> The [development-history hub]({{% relref path="/posts/StreamingVideoLMM-Development" %}})
+> places LiveVLM in the complete series.
 
 ## Background
 **Online video understanding** is harder than offline long-video QA.

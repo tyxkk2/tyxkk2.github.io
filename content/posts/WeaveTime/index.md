@@ -1,15 +1,18 @@
 +++
 date = '2026-07-24T00:32:09+08:00'
+lastmod = '2026-09-03T19:28:00-05:00'
 title = 'WeaveTime'
 description = 'Temporal-order instruction tuning and uncertainty-gated historical KV retrieval for streaming Video-LLMs.'
 venue = 'CVPR 2026'
 math = true
 categories = ["AI", "VLM", "paper", "KV cache"]
-tags = ["Video-LLM", "streaming", "retrieval", "KV cache", "WeaveTime"]
+tags = ["Video-LLM", "streaming", "retrieval", "KV cache", "WeaveTime", "streaming-video-lmm"]
 decor_image = "images/bg4.png"
 +++
 
-Paper: [WeaveTime: Stream from Earlier Frames into Emergent Memory in VideoLLMs](https://arxiv.org/abs/2602.22142)
+Paper: [WeaveTime: Streaming from Earlier Frames into Emergent Memory in VideoLLMs](https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_WeaveTime_Streaming_from_Earlier_Frames_into_Emergent_Memory_in_VideoLLMs_CVPR_2026_paper.html)
+
+Preprint (earlier title: *Stream from Earlier Frames*): [arXiv:2602.22142](https://arxiv.org/abs/2602.22142)
 
 PDF: [CVPR 2026 Open Access](https://openaccess.thecvf.com/content/CVPR2026/papers/Zhang_WeaveTime_Streaming_from_Earlier_Frames_into_Emergent_Memory_in_VideoLLMs_CVPR_2026_paper.pdf)
 
@@ -18,6 +21,13 @@ Supplement: [CVPR 2026 Supplementary Material](https://openaccess.thecvf.com/con
 Project: [WeaveTime](https://zhangyl4.github.io/publications/weavetime/)
 
 Code: [zhangyl4/weavetime](https://github.com/zhangyl4/weavetime)
+
+> **Series guide.** PCDF bounds when and how much history is read, not how much
+> ReKV-style history is stored. See the
+> [bounded-memory survey]({{% relref path="/posts/StreamingMemory-Retention" %}})
+> for the resource comparison and the
+> [development-history hub]({{% relref path="/posts/StreamingVideoLMM-Development" %}})
+> for the complete series.
 
 ## Core Idea
 

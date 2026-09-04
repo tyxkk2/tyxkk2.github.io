@@ -1,16 +1,24 @@
 +++
 date = '2026-04-24T22:40:03+08:00'
-lastmod = '2026-06-08T15:26:57+08:00'
+lastmod = '2026-09-03T19:28:00-05:00'
 title = 'StreamMem'
 description = 'Query-Agnostic KV Cache Memory for Streaming Video Understanding.'
-venue = 'VidLLMs 2026'
+venue = 'CVPR 2026 VidLLMs Workshop'
 categories = ["AI", "VLM", "paper", "KV cache"]
-tags = ["Video-LLM", "streaming", "memory", "compression", "StreamMem"]
+tags = ["Video-LLM", "streaming", "memory", "compression", "StreamMem", "streaming-video-lmm"]
 # Set to true on posts that need LaTeX rendering.
 math = true
 +++
 
 Paper: [StreamMem: Query-Agnostic KV Cache Memory for Streaming Video Understanding](https://arxiv.org/abs/2508.15717)
+
+Project: [StreamMem](https://yangyanl.ai/streammem/)
+
+> **Series guide.** For how proxy-guided retention fits between exact archives
+> and summary-state memory, see the
+> [bounded-memory survey]({{% relref path="/posts/StreamingMemory-Retention" %}}).
+> The [development-history hub]({{% relref path="/posts/StreamingVideoLMM-Development" %}})
+> places this method in the complete series.
 
 ## Background
 **Streaming video understanding** is hard because the model has to process frames as they arrive, without knowing:

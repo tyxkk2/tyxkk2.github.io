@@ -1,6 +1,6 @@
 +++
 date = '2026-04-22T16:20:54+08:00'
-lastmod = '2026-09-03T18:00:00-05:00'
+lastmod = '2026-09-03T19:28:00-05:00'
 title = 'ReKV'
 description = 'Streaming Video Question-Answering with In-context Video KV-Cache Retrieval.'
 venue = 'ICLR 2025'
@@ -13,7 +13,9 @@ tags = ["Video-LLM", "streaming", "retrieval", "ReKV", "streaming-video-lmm"]
 > [development-history hub]({{% relref path="/posts/StreamingVideoLMM-Development" %}})
 > for the field-level map, or use the
 > [pipeline survey]({{% relref path="/posts/StreamingVLM-Pipeline" %}}) to place
-> ReKV's write, index, and read stages in a complete system.
+> ReKV's write, index, and read stages in a complete system. The
+> [bounded-memory survey]({{% relref path="/posts/StreamingMemory-Retention" %}})
+> compares its growing exact-KV archive with later fixed-state methods.
 
 Paper: [Streaming Video Question-Answering with In-context Video KV-Cache Retrieval](https://openreview.net/forum?id=8g9fs6mdEG)
 
