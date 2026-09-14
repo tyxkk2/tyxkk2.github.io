@@ -11,18 +11,16 @@ hideMeta = true
 
 Hi, I'm **Yuxuan Tang (唐雨轩)**, a senior undergraduate studying Computer Science and Technology with a minor in Mathematics at Tsinghua University.
 
-I'm currently working with [Francis Y. Yan](https://fyy.cs.illinois.edu) in the Illinois NSAI Lab on efficient KV-cache retrieval for long-context video understanding.
+I'm now at UIUC in person till the end of the Fall 2026 semester, currently working with [Francis Y. Yan](https://fyy.cs.illinois.edu) in the Illinois NSAI Lab on efficient KV-cache retrieval for long-context video understanding.
 
 ## Research Interests
 
 My interests lie in LLM inference systems, long-context optimization, and efficient video understanding.
 
 ## Misc
-I'll be visiting UIUC in person starting Fall 2026 — feel free to reach out if you're around!
+~~As scheduled, I will be at Comic Market 108 (C108) in Tokyo, during August 15-16, 2026.~~ (NOT AS SCHEDULED SAD)
 
-~~As scheduled, I will be at Comic Market 108 (C108) in Tokyo, during August 15-16, 2026.~~ (SAD)
-
-I may attend Comic Market 109 (C109) in Tokyo at the end of 2026.
+I may attend Comic Market 109 (C109) in Tokyo at the end of 2026. (Now it seems less possible SAD)
 
 ## Contact
 
