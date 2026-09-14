@@ -20,6 +20,8 @@ My interests lie in LLM inference systems, long-context optimization, and effici
 ## Misc
 ~~As scheduled, I will be at Comic Market 108 (C108) in Tokyo, during August 15-16, 2026.~~ (NOT AS SCHEDULED SAD)
 
+I'm going to Allen, TX for the Swiss stage (Swiss day 3, 4 and 5) of League of Legends 2026 World Final during October 25th - 28th.
+
 I may attend Comic Market 109 (C109) in Tokyo at the end of 2026. (Now it seems less possible SAD)
 
 ## Contact
