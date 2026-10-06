@@ -3,8 +3,8 @@
 | Field | Value |
 | --- | --- |
 | Status | `active` |
-| Current phase | `S1 — Home/About proportion refinement` |
-| Next action | Refine the merged homepage's sidebar, reading width, and spacing; validate desktop/mobile layouts and commit the refinement separately before resuming F3. |
+| Current phase | `F3 — Set-wise Retention and Pipeline v2` |
+| Next action | Draft the source-backed SAVEMem/CoRDS/NovaCov comparison matrix in `content/posts/SetWise-Streaming-Memory/index.md`, covering query visibility, memory unit, set objective, budget boundary, and guarantee assumptions, before updating Pipeline v2. |
 | Last updated | 2026-10-06 |
 | Baseline observed before plan creation | `e38b12b` on `main` |
 | Research-context cutoff | 2026-09-02 |
@@ -93,7 +93,7 @@ or project sources even when the research-context report already contains them.
 
 | Phase | Priority | Status | Depends on | Primary outcome |
 | --- | --- | --- | --- | --- |
-| S1 | P0 | `in_progress` | — | User-requested combined Home/About page and responsive profile sidebar |
+| S1 | P0 | `done` | — | User-requested combined Home/About page and responsive profile sidebar |
 | F0 | P0 | `done` | — | Canonical source ledger and naming/version ground truth |
 | F1 | P0 | `done` | F0 | Development overview and discoverable series hub |
 | F2 | P0 | `done` | F0, F1 | Bounded-memory evolution and expanded ReKV note |
@@ -109,11 +109,11 @@ parallel, but all must use the F0 source ledger and F1 navigation conventions.
 
 ## S1 — Combined Home and About Layout
 
-**Status:** `in_progress`
+**Status:** `done`
 
-The merged homepage is validated and committed as the first reviewable outcome.
-The user requested a separate follow-up commit to refine its proportions. The
-research program resumes at its existing F3 comparison-matrix action afterward.
+The merged homepage and its proportion refinement are validated as two separate
+commits, as requested. The research program resumes at its existing F3
+comparison-matrix action.
 
 ### Acceptance criteria
 
@@ -136,7 +136,13 @@ article together, with Home/Blog navigation. Desktop (1440px and 1024px) and
 mobile (390px) layouts, light/dark themes, sidebar Blog navigation, and the
 legacy About redirect passed inspection. Production output has one H1 and the
 correct homepage canonical URL; the build passed with 153 pages and 62 aliases.
-The initial layout is committed locally; the proportion refinement is pending.
+The initial layout was committed in `8ad848f`. The follow-up aligns the page
+width with the navigation, uses a flexible 28% sidebar with a 260px minimum,
+balances divider spacing at 32px per side, and centers the profile around a
+176px avatar. Reading width, title sizes, and line height are slightly tighter;
+the mobile avatar remains 150px. Desktop (1440px), tablet (768px), mobile (390px),
+light/dark appearance, and the exact-version build passed. Both commits are
+local and unpublished.
 
 ## Global Acceptance Gates
 
@@ -822,4 +828,5 @@ lands.
 | 2026-09-03 | F2 | `948c148` | First-party version and mechanism audit; independent factual review; `git diff --check`; exact Hugo build | Added the bounded-memory survey, resource table, delayed-query qualifiers, and retrieval-behavior hypothesis. |
 | 2026-09-03 | F2 | `5721a3d` | Reciprocal-link, tag, metadata, and `lastmod` audit; six new first-party URLs returned 200; Hugo Extended 0.160.1 build generated 154 pages; desktop/mobile article and navigation inspection; browser console | Connected the survey with the hub and related ReKV, InfiniPot-V, StreamMem, LiveVLM, MuKV, and WeaveTime notes. |
 | 2026-09-03 | F2 → F3 | this commit | F2 Research, Content, Integration, and Build gates audited | Marked F2 done and activated the source-matrix-first F3 action. |
-| 2026-10-06 | S1 | this commit | `git diff --check`; Hugo Extended 0.160.1 `make build`; `make dev` visual QA at 1440px, 1024px, and 390px; light/dark themes; Blog navigation and About redirect; unchanged-prose and canonical/heading checks; no browser warnings or errors | Combined Home/About with a responsive personal sidebar and preserved the legacy URL; refine proportions in a separate follow-up commit. |
+| 2026-10-06 | S1 | `8ad848f` | `git diff --check`; Hugo Extended 0.160.1 `make build`; `make dev` visual QA at 1440px, 1024px, and 390px; light/dark themes; Blog navigation and About redirect; unchanged-prose and canonical/heading checks; no browser warnings or errors | Combined Home/About with a responsive personal sidebar and preserved the legacy URL; refine proportions in a separate follow-up commit. |
+| 2026-10-06 | S1 refinement | this commit | `git diff --check`; Hugo Extended 0.160.1 `make build`; existing `make dev` preview checked at 1440px, 768px, and 390px with no horizontal overflow; light/dark visual inspection | Balanced sidebar/content proportions, centered profile content, and refined typography and spacing; S1 is complete and the research next action returns to F3. |

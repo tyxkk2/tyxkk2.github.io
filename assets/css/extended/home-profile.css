@@ -1,6 +1,6 @@
 .main.home-main {
-    max-width: calc(1080px + var(--gap) * 2);
-    padding-top: clamp(2rem, 4vw, 3.5rem);
+    max-width: calc(var(--nav-width) + var(--gap) * 2);
+    padding-top: clamp(2rem, 4vw, 3rem);
     padding-bottom: 3rem;
 }
 
@@ -40,9 +40,9 @@
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: 280px minmax(0, 1fr);
+    grid-template-columns: minmax(260px, 28%) minmax(0, 1fr);
     align-items: start;
-    gap: clamp(2rem, 4vw, 3.5rem);
+    gap: 2rem;
     width: 100%;
 }
 
@@ -53,15 +53,15 @@
 .profile-identity {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     min-width: 0;
-    text-align: left;
+    text-align: center;
 }
 
 .profile-avatar {
     position: relative;
     display: inline-flex;
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.5rem;
 }
 
 .profile-avatar::before {
@@ -85,8 +85,8 @@
 .main .profile .profile-avatar img {
     position: relative;
     z-index: 1;
-    width: 168px;
-    height: 168px;
+    width: 176px;
+    height: 176px;
     object-fit: cover;
     transform: none;
     border: 2px solid color-mix(in srgb, var(--theme) 82%, transparent);
@@ -100,14 +100,14 @@
 .profile-identity .profile-name {
     margin: 0 0 0.6rem;
     color: var(--primary);
-    font-size: 1.9rem;
+    font-size: 1.8rem;
     line-height: 1.14;
     letter-spacing: -0.035em;
 }
 
 .profile-identity .profile-subtitle {
     display: block;
-    max-width: 18rem;
+    max-width: 16rem;
     color: var(--secondary);
     font-size: 0.94rem;
     line-height: 1.65;
@@ -116,7 +116,6 @@
 
 .profile-identity .social-icons {
     margin-top: 0.75rem;
-    margin-left: -0.6rem;
 }
 
 .profile-identity .social-icons a {
@@ -130,10 +129,9 @@
 }
 
 .profile-identity .buttons {
-    justify-content: flex-start;
+    justify-content: center;
     max-width: none;
     margin-top: 0.3rem;
-    margin-left: -0.4rem;
 }
 
 .profile-identity .button {
@@ -177,12 +175,13 @@
 }
 
 .main .profile .home-poem {
-    margin: 1.75rem 0 0;
+    margin: 1.5rem 0 0;
     padding-top: 1.5rem;
     color: var(--secondary);
-    font-size: 0.75rem;
+    font-size: clamp(0.75rem, 0.9vw, 0.8125rem);
     line-height: 2;
     text-wrap: pretty;
+    text-align: center;
     border-top: 1px solid var(--border);
 }
 
@@ -193,13 +192,13 @@
 
 .home-about {
     min-width: 0;
-    padding-left: clamp(1.75rem, 3vw, 2.75rem);
+    padding-left: 2rem;
     border-left: 1px solid var(--border);
 }
 
 .home-about-header h1 {
     margin: 0 0 1.25rem;
-    font-size: 2.25rem;
+    font-size: 2.125rem;
     line-height: 1.2;
     letter-spacing: -0.03em;
 }
@@ -207,7 +206,7 @@
 .home-about .post-content {
     margin: 0;
     font-size: 1rem;
-    line-height: 1.8;
+    line-height: 1.75;
 }
 
 .home-about .post-content h2 {
@@ -265,11 +264,6 @@
         display: block;
     }
 
-    .profile-identity {
-        align-items: center;
-        text-align: center;
-    }
-
     .profile-avatar {
         margin-bottom: 1.25rem;
     }
@@ -279,18 +273,8 @@
         height: 150px;
     }
 
-    .profile-identity .social-icons,
-    .profile-identity .buttons {
-        margin-left: 0;
-    }
-
-    .profile-identity .buttons {
-        justify-content: center;
-    }
-
     .main .profile .home-poem {
         margin-top: 1.5rem;
-        text-align: center;
     }
 
     .home-about-header h1 {
