@@ -22,7 +22,7 @@
 <body id="top">
 {{- end }}
     {{ partialCached "header.html" . .Page -}}
-    <main class="main">
+    <main class="main{{ if and .IsHome site.Params.profileMode.enabled }} home-main{{ end }}">
         {{- block "main" . }}{{ end }}
     </main>
     {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}

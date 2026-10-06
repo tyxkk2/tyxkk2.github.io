@@ -75,22 +75,13 @@ theme = 'PaperMod'
   url = "https://space.bilibili.com/163827523"
 
 [[params.profileMode.buttons]]
-  name = "About"
-  url = "/about"
-
-[[params.profileMode.buttons]]
   name = "Blog"
-  url = "/posts"
+  url = "/posts/"
 
 [[menus.main]]
   name = "Home"
   url = "/"
   weight = 10
-
-[[menus.main]]
-  name = "About"
-  url = "/about/"
-  weight = 20
 
 [[menus.main]]
   name = "Blog"

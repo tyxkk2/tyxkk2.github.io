@@ -1,7 +1,8 @@
 +++
 date = '2026-04-10T18:18:31+08:00'
-lastmod = '2026-07-11T00:17:04+08:00'
+lastmod = '2026-10-06T00:00:00-05:00'
 title = 'About'
+aliases = ['/about/']
 ShowReadingTime = false
 ShowBreadCrumbs = false
 ShowPostNavLinks = false

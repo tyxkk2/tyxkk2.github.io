@@ -1,6 +1,7 @@
 <div class="profile">
-    {{- with site.Params.profileMode }}
     <div class="profile_inner">
+        <aside class="profile-sidebar" aria-label="Profile">
+        {{- with site.Params.profileMode }}
         <div class="profile-identity">
         {{- if .imageUrl -}}
         <div class="profile-avatar">
@@ -33,7 +34,7 @@
         {{- end }}
         </div>
         {{- end }}
-        <h1>{{ .title | default site.Title | markdownify }}</h1>
+        <h2 class="profile-name">{{ .title | default site.Title | markdownify }}</h2>
         <span class="profile-subtitle">{{ .subtitle | markdownify }}</span>
         {{- partial "social_icons.html" -}}
 
@@ -57,9 +58,10 @@
         </div>
         {{- end }}
         </div>
+        {{- end }}
 
         {{- with site.Params.homePoem }}
-        <div class="home-poem">
+        <div class="home-poem" lang="ja">
             {{- range .lines }}
             <p>{{ . | markdownify }}</p>
             {{- end }}
@@ -68,6 +70,15 @@
             {{- end }}
         </div>
         {{- end }}
+        </aside>
+
+        <article class="home-about" id="about" aria-labelledby="about-title">
+            <header class="home-about-header">
+                <h1 id="about-title">{{ .Title }}</h1>
+            </header>
+            <div class="post-content">
+                {{- partial "anchored_headings.html" .Content -}}
+            </div>
+        </article>
     </div>
-    {{- end}}
 </div>

@@ -3,9 +3,9 @@
 | Field | Value |
 | --- | --- |
 | Status | `active` |
-| Current phase | `F3 — Set-wise Retention and Pipeline v2` |
-| Next action | Draft the source-backed SAVEMem/CoRDS/NovaCov comparison matrix in `content/posts/SetWise-Streaming-Memory/index.md`, covering query visibility, memory unit, set objective, budget boundary, and guarantee assumptions, before updating Pipeline v2. |
-| Last updated | 2026-09-02 |
+| Current phase | `S1 — Home/About proportion refinement` |
+| Next action | Refine the merged homepage's sidebar, reading width, and spacing; validate desktop/mobile layouts and commit the refinement separately before resuming F3. |
+| Last updated | 2026-10-06 |
 | Baseline observed before plan creation | `e38b12b` on `main` |
 | Research-context cutoff | 2026-09-02 |
 
@@ -34,7 +34,8 @@ maintainable research series that:
 - Do not copy the full source report into one post.
 - Do not turn the site into a live paper database or a unified leaderboard.
 - Do not implement or reproduce the research methods in this program.
-- Do not redesign the PaperMod theme or add multilingual Hugo support.
+- Do not redesign the PaperMod theme or add multilingual Hugo support, except for
+  the user-requested Home/About layout work in S1.
 - Do not add a new `series` taxonomy during this plan; use the existing tag and a
   curated hub unless a later decision explicitly changes this.
 - Do not promise complete coverage of every streaming-video preprint.
@@ -92,6 +93,7 @@ or project sources even when the research-context report already contains them.
 
 | Phase | Priority | Status | Depends on | Primary outcome |
 | --- | --- | --- | --- | --- |
+| S1 | P0 | `in_progress` | — | User-requested combined Home/About page and responsive profile sidebar |
 | F0 | P0 | `done` | — | Canonical source ledger and naming/version ground truth |
 | F1 | P0 | `done` | F0 | Development overview and discoverable series hub |
 | F2 | P0 | `done` | F0, F1 | Bounded-memory evolution and expanded ReKV note |
@@ -104,6 +106,37 @@ or project sources even when the research-context report already contains them.
 
 After F1, phases F2–F7 are content-independent enough to be developed in
 parallel, but all must use the F0 source ledger and F1 navigation conventions.
+
+## S1 — Combined Home and About Layout
+
+**Status:** `in_progress`
+
+The merged homepage is validated and committed as the first reviewable outcome.
+The user requested a separate follow-up commit to refine its proportions. The
+research program resumes at its existing F3 comparison-matrix action afterward.
+
+### Acceptance criteria
+
+- Home shows the existing avatar, identity, social links, Blog link, and poem in
+  a left sidebar, with the complete existing About prose in the main column.
+- Narrow screens stack the profile above the About content without clipping or
+  horizontal overflow; light and dark themes remain readable.
+- Navigation has one combined Home destination; old `/about/` links resolve to
+  the homepage, and About content has one Markdown source.
+- `git diff --check`, Hugo Extended `0.160.1` production build, and `make dev`
+  desktop/mobile visual checks pass; Blog navigation remains functional.
+- Refine sidebar/content proportions and spacing in a second commit, preserving
+  the About prose and responsive behavior.
+
+### Completion note
+
+The About prose moved unchanged to `content/_index.md`; `/about/` is a Hugo
+alias to the homepage. The profile partial now renders the sidebar and About
+article together, with Home/Blog navigation. Desktop (1440px and 1024px) and
+mobile (390px) layouts, light/dark themes, sidebar Blog navigation, and the
+legacy About redirect passed inspection. Production output has one H1 and the
+correct homepage canonical URL; the build passed with 153 pages and 62 aliases.
+The initial layout is committed locally; the proportion refinement is pending.
 
 ## Global Acceptance Gates
 
@@ -752,6 +785,7 @@ Initial watchlist:
 
 | Date | Decision | Reason | Downstream effect |
 | --- | --- | --- | --- |
+| 2026-10-06 | Merge Home and About into a responsive profile-and-biography homepage, retaining the old About URL as an alias. | The user explicitly requested personal information in the left sidebar and About in the main column. | S1 is a scoped exception to the layout non-goal; research phases and existing About prose keep their scope. |
 | 2026-09-02 | Use one root `PLAN.md` as the only active plan and keep stable rules in `AGENTS.md`. | Prevent multiple current plans from drifting while ensuring future agents discover the workflow. | All phases and work logs are maintained here. |
 | 2026-09-02 | Organize work by functional phases rather than weekly deadlines. | Each phase may require many commits and research timing is uncertain. | Progress is dependency- and acceptance-driven. |
 | 2026-09-02 | Keep public research content in English. | The site defaults to English and all current research notes are English. | No multilingual Hugo changes are in scope. |
@@ -770,7 +804,8 @@ Initial watchlist:
 ## Work Log
 
 Update this table when committed work lands. Use one row per reviewable commit or
-small related commit group.
+small related commit group. Label validated local work as uncommitted until it
+lands.
 
 | Date | Phase | Commit(s) | Validation | Result / next step |
 | --- | --- | --- | --- | --- |
@@ -787,3 +822,4 @@ small related commit group.
 | 2026-09-03 | F2 | `948c148` | First-party version and mechanism audit; independent factual review; `git diff --check`; exact Hugo build | Added the bounded-memory survey, resource table, delayed-query qualifiers, and retrieval-behavior hypothesis. |
 | 2026-09-03 | F2 | `5721a3d` | Reciprocal-link, tag, metadata, and `lastmod` audit; six new first-party URLs returned 200; Hugo Extended 0.160.1 build generated 154 pages; desktop/mobile article and navigation inspection; browser console | Connected the survey with the hub and related ReKV, InfiniPot-V, StreamMem, LiveVLM, MuKV, and WeaveTime notes. |
 | 2026-09-03 | F2 → F3 | this commit | F2 Research, Content, Integration, and Build gates audited | Marked F2 done and activated the source-matrix-first F3 action. |
+| 2026-10-06 | S1 | this commit | `git diff --check`; Hugo Extended 0.160.1 `make build`; `make dev` visual QA at 1440px, 1024px, and 390px; light/dark themes; Blog navigation and About redirect; unchanged-prose and canonical/heading checks; no browser warnings or errors | Combined Home/About with a responsive personal sidebar and preserved the legacy URL; refine proportions in a separate follow-up commit. |
