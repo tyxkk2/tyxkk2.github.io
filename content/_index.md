@@ -10,20 +10,19 @@ ShowToc = false
 hideMeta = true
 +++
 
-Hi, I'm **Yuxuan Tang (唐雨轩)**, a senior undergraduate studying Computer Science and Technology with a minor in Mathematics at Tsinghua University.
+Hi, I'm **Yuxuan Tang (唐雨轩)**. I am a final-year undergraduate in Computer Science and Technology at Tsinghua University, with a minor in Mathematics. I expect to graduate in June 2027.
 
-I'm now at UIUC in person till the end of the Fall 2026 semester, currently working with [Francis Y. Yan](https://fyy.cs.illinois.edu) in the Illinois NSAI Lab on efficient KV-cache retrieval for long-context video understanding.
+I am currently a Student Intern in the Illinois NSAI Lab at the University of Illinois Urbana-Champaign (UIUC), working with [Prof. Francis Y. Yan](https://fyy.cs.illinois.edu).
+
+I am applying to Ph.D. programs for Fall 2027.
 
 ## Research Interests
 
-My interests lie in LLM inference systems, long-context optimization, and efficient video understanding.
+My research interests lie in AI systems, particularly efficient inference for multimodal models. My current work focuses on memory and retrieval for streaming video understanding: what to retain from a video stream, how to retrieve relevant past context, and how these choices affect question answering. I am interested in balancing answer quality, memory use, and inference cost.
 
 ## Misc
-~~As scheduled, I will be at Comic Market 108 (C108) in Tokyo, during August 15-16, 2026.~~ (NOT AS SCHEDULED SAD)
 
-I'm going to Allen, TX for the Swiss stage (Swiss day 3, 4 and 5) of League of Legends 2026 World Final during October 25th - 28th.
-
-I may attend Comic Market 109 (C109) in Tokyo at the end of 2026. (Now it seems less possible SAD)
+I'm going to Texas on Nov. 3–5, 2026 for League of Legends Worlds quarterfinals.
 
 ## Contact
 

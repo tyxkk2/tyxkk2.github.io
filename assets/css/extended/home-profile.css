@@ -40,14 +40,15 @@
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: minmax(260px, 28%) minmax(0, 1fr);
+    grid-template-columns: minmax(292px, calc(28% + 2rem)) minmax(0, 1fr);
     align-items: start;
-    gap: 2rem;
+    gap: 2rem 0;
     width: 100%;
 }
 
 .profile-sidebar {
     min-width: 0;
+    padding-inline: 1rem;
 }
 
 .profile-identity {
@@ -244,6 +245,7 @@
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         align-items: center;
         gap: 1.5rem;
+        padding-inline: 0;
     }
 
     .main .profile .home-poem {
