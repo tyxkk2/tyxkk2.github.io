@@ -5,7 +5,7 @@
 | Status | `active` |
 | Current phase | `F3 — Set-wise Retention and Pipeline v2` |
 | Next action | Draft the source-backed SAVEMem/CoRDS/NovaCov comparison matrix in `content/posts/SetWise-Streaming-Memory/index.md`, covering query visibility, memory unit, set objective, budget boundary, and guarantee assumptions, before updating Pipeline v2. |
-| Last updated | 2026-10-06 |
+| Last updated | 2026-10-08 |
 | Baseline observed before plan creation | `e38b12b` on `main` |
 | Research-context cutoff | 2026-09-02 |
 
@@ -112,7 +112,8 @@ parallel, but all must use the F0 source ledger and F1 navigation conventions.
 **Status:** `done`
 
 The merged homepage and its proportion refinement are validated as two separate
-commits, as requested. The research program resumes at its existing F3
+commits, as requested. The horizontal-centering correction and avatar clarity
+follow-up are also validated; the research program resumes at its existing F3
 comparison-matrix action.
 
 ### Acceptance criteria
@@ -127,6 +128,10 @@ comparison-matrix action.
   desktop/mobile visual checks pass; Blog navigation remains functional.
 - Refine sidebar/content proportions and spacing in a second commit, preserving
   the About prose and responsive behavior.
+- Center the profile horizontally between the left content edge and the visible
+  divider, and preserve natural stacking on narrow screens.
+- Provide 1x/2x/3x avatar sources from the existing original, using the same image
+  processing in development and production while preserving the display size.
 
 ### Completion note
 
@@ -141,8 +146,23 @@ width with the navigation, uses a flexible 28% sidebar with a 260px minimum,
 balances divider spacing at 32px per side, and centers the profile around a
 176px avatar. Reading width, title sizes, and line height are slightly tighter;
 the mobile avatar remains 150px. Desktop (1440px), tablet (768px), mobile (390px),
-light/dark appearance, and the exact-version build passed. Both commits are
-local and unpublished.
+light/dark appearance, and the exact-version build passed. The refinement was
+committed in `421af19`.
+
+The user clarified that the remaining centering concern was horizontal. The
+32px desktop gutter is now part of the sidebar, with symmetric 16px inner
+padding, so the profile is centered between the left content edge and the
+divider. The divider and About reading width keep their positions. At 1440px
+and 390px, the measured avatar-to-sidebar center difference is zero, with no
+horizontal overflow. This correction was committed in `e414ced`.
+
+The avatar template now generates 190px, 380px, and 570px images directly from
+the existing 940px original with JPEG quality 90 and advertises them as 1x/2x/3x
+sources. Development and production use the same processing; each image's
+dimensions and SHA-256 match across environments. Hugo Extended 0.160.1
+production build and 1440px/390px visual checks passed, with the existing
+176px/150px display sizes, zero center offset, no horizontal overflow, and no
+browser warnings or errors. The avatar fix is included in this commit.
 
 ## Global Acceptance Gates
 
@@ -829,4 +849,8 @@ lands.
 | 2026-09-03 | F2 | `5721a3d` | Reciprocal-link, tag, metadata, and `lastmod` audit; six new first-party URLs returned 200; Hugo Extended 0.160.1 build generated 154 pages; desktop/mobile article and navigation inspection; browser console | Connected the survey with the hub and related ReKV, InfiniPot-V, StreamMem, LiveVLM, MuKV, and WeaveTime notes. |
 | 2026-09-03 | F2 → F3 | this commit | F2 Research, Content, Integration, and Build gates audited | Marked F2 done and activated the source-matrix-first F3 action. |
 | 2026-10-06 | S1 | `8ad848f` | `git diff --check`; Hugo Extended 0.160.1 `make build`; `make dev` visual QA at 1440px, 1024px, and 390px; light/dark themes; Blog navigation and About redirect; unchanged-prose and canonical/heading checks; no browser warnings or errors | Combined Home/About with a responsive personal sidebar and preserved the legacy URL; refine proportions in a separate follow-up commit. |
-| 2026-10-06 | S1 refinement | this commit | `git diff --check`; Hugo Extended 0.160.1 `make build`; existing `make dev` preview checked at 1440px, 768px, and 390px with no horizontal overflow; light/dark visual inspection | Balanced sidebar/content proportions, centered profile content, and refined typography and spacing; S1 is complete and the research next action returns to F3. |
+| 2026-10-06 | S1 refinement | `421af19` | `git diff --check`; Hugo Extended 0.160.1 `make build`; existing `make dev` preview checked at 1440px, 768px, and 390px with no horizontal overflow; light/dark visual inspection | Balanced sidebar/content proportions, centered profile content, and refined typography and spacing; S1 is complete and the research next action returns to F3. |
+| 2026-10-06 | S1 alignment | `e414ced` | `git diff --check`; Hugo Extended 0.160.1 `make build`; existing `make dev` preview and measured center/overflow checks at 1440px and 390px | Included the former gutter in the visible left column and centered the profile with symmetric padding, correcting its 16px leftward offset. |
+| 2026-10-06 | S1 About content | `e414ced` | `git diff --check`; Hugo Extended 0.160.1 `make build` in an isolated working-tree copy; rendered biography, contacts, Misc, headings, and About redirect checks | Updated the approved biography and research description, added the Fall 2027 Ph.D. application statement, and limited Misc to the confirmed November 3–5 Worlds quarterfinals in Allen. Preserved the merged Home/About structure and concurrent alignment edits. |
+| 2026-10-08 | S1 avatar diagnosis | this commit | Source/generated image metadata and visual inspection; live homepage image URL and SHA-256 match; template/CSS audit; `git diff --check`; no runtime changes requiring a build | Original avatar is 940px square, but production previously resized it to 190px with no density variants for the 176px display while development skipped that resize. Density-aware output and matching preview behavior address this high-density-screen softness in the implementation below. |
+| 2026-10-08 | S1 avatar clarity | this commit | `git diff --check`; Hugo Extended 0.160.1 `make build`; production/development HTML, 190/380/570px image dimensions, and matching SHA-256 checks; `make dev` desktop/mobile visual QA at 1440px and 390px; browser console | Added 1x/2x/3x avatar sources at quality 90 and unified development/production processing. Original asset, display size, and centering are preserved; included in this commit for the user-requested push. |
