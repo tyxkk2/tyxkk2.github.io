@@ -1,5 +1,6 @@
 +++
 date = '2026-10-19T00:00:00-05:00'
+lastmod = '2026-10-20T00:00:00-05:00'
 title = 'Friends'
 description = 'Friends and fellow bloggers. Stop by and say hello.'
 layout = 'friends'
@@ -25,6 +26,12 @@ name = 'Yukari'
 url = 'https://yukar.icu/'
 avatar = 'https://yukar.icu/avatar.jpg'
 description = 'ロマンと理想は私の同義語です'
+
+[[friends]]
+name = "Young's Toy Box"
+url = 'https://wesley-young.github.io/'
+avatar = 'https://avatars.githubusercontent.com/u/25684570?v=4'
+description = '玩具盒'
 +++
 
 ## Exchange links

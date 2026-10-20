@@ -202,6 +202,16 @@ contact wording to "send me a message" without an email link. Existing field
 labels stay unchanged, and canonical URLs are shown in previews as well as
 production. Resume the existing F3 action.
 
+The 2026-10-20 link-exchange follow-up adds Young's Toy Box using its published
+site details and submits
+[`Wesley-Young/wesley-young.github.io#4`](https://github.com/Wesley-Young/wesley-young.github.io/pull/4)
+with the user's confirmed title, description, avatar, and URL. The upstream PR
+changes only `friends.ts` and preserves trailing commas. Before committing the
+reciprocal entry, `main` was synchronized to `1c8ddc5`, retaining its new Yukari
+entry and unrelated local edits. The exact-version Hugo build, whitespace check,
+and 1440px/390px previews pass with all three cards and no horizontal overflow;
+Biome 2.5.15 also passes for the submitted `friends.ts`.
+
 ## Global Acceptance Gates
 
 Every content phase must pass the applicable gates before it becomes `done`.
@@ -896,3 +906,4 @@ lands.
 | 2026-10-19 | S2 | this commit | `git diff --check`; Hugo Extended 0.160.1 `make build`; production canonical/H1/navigation checks; original/published avatar SHA-256 match; `make dev` at 1440px/390px in light/dark themes; Home/Blog/Friends navigation; no browser warnings/errors | Added the Friends page and NAGISA card, global navigation, stable avatar URL, and reusable site details. The user approved committing and pushing the result; F3 remains the research next action. |
 | 2026-10-19 | S2 wording | this commit | `git diff --check`; Hugo Extended 0.160.1 `make build`; existing `make dev` preview at 1440px/390px; rendered field labels and values checked | Changed the invitation to "send me a message" and set the example to the user's chosen name, Japanese description, and canonical URLs. Field labels and global site identity remain unchanged. |
 | 2026-10-20 | S2 friend link | this commit | First-party link-exchange details checked; TOML front matter and `git diff --check` validated; local Hugo unavailable, so the exact-version build is delegated to the existing push-triggered CI | Added Yukari using the name, homepage URL, avatar, and description published on its Friends page. Existing cards, layout, and the F3 next action are unchanged. |
+| 2026-10-20 | S2 reciprocal friend link | this commit | First-party exchange requirements checked; `git diff --check`; Hugo Extended 0.160.1 `make build`; `make dev` at 1440px/390px with all avatars loaded and no overflow or browser warnings/errors; Biome 2.5.15 check of upstream `friends.ts` | Synchronized to `1c8ddc5` and preserved Yukari before adding Young's Toy Box. Submitted [upstream PR #4](https://github.com/Wesley-Young/wesley-young.github.io/pull/4) with the user's confirmed site details and trailing commas. Unrelated edits are preserved; F3 remains the next research action. |
