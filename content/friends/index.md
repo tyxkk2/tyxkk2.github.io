@@ -19,6 +19,12 @@ name = "NAGISA's Blog"
 url = 'https://kujostar.github.io/'
 avatar = 'https://kujostar.github.io/assets/avatar.jpg'
 description = 'Day before yesterday I saw a rabbit, and yesterday a deer, and today, you.'
+
+[[friends]]
+name = 'Yukari'
+url = 'https://yukar.icu/'
+avatar = 'https://yukar.icu/avatar.jpg'
+description = 'ロマンと理想は私の同義語です'
 +++
 
 ## Exchange links

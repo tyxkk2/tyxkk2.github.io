@@ -5,7 +5,7 @@
 | Status | `active` |
 | Current phase | `F3 — Set-wise Retention and Pipeline v2` |
 | Next action | Draft the source-backed SAVEMem/CoRDS/NovaCov comparison matrix in `content/posts/SetWise-Streaming-Memory/index.md`, covering query visibility, memory unit, set objective, budget boundary, and guarantee assumptions, before updating Pipeline v2. |
-| Last updated | 2026-10-19 |
+| Last updated | 2026-10-20 |
 | Baseline observed before plan creation | `e38b12b` on `main` |
 | Research-context cutoff | 2026-09-02 |
 
@@ -895,3 +895,4 @@ lands.
 | 2026-10-08 | S1 avatar clarity | this commit | `git diff --check`; Hugo Extended 0.160.1 `make build`; production/development HTML, 190/380/570px image dimensions, and matching SHA-256 checks; `make dev` desktop/mobile visual QA at 1440px and 390px; browser console | Added 1x/2x/3x avatar sources at quality 90 and unified development/production processing. Original asset, display size, and centering are preserved; included in this commit for the user-requested push. |
 | 2026-10-19 | S2 | this commit | `git diff --check`; Hugo Extended 0.160.1 `make build`; production canonical/H1/navigation checks; original/published avatar SHA-256 match; `make dev` at 1440px/390px in light/dark themes; Home/Blog/Friends navigation; no browser warnings/errors | Added the Friends page and NAGISA card, global navigation, stable avatar URL, and reusable site details. The user approved committing and pushing the result; F3 remains the research next action. |
 | 2026-10-19 | S2 wording | this commit | `git diff --check`; Hugo Extended 0.160.1 `make build`; existing `make dev` preview at 1440px/390px; rendered field labels and values checked | Changed the invitation to "send me a message" and set the example to the user's chosen name, Japanese description, and canonical URLs. Field labels and global site identity remain unchanged. |
+| 2026-10-20 | S2 friend link | this commit | First-party link-exchange details checked; TOML front matter and `git diff --check` validated; local Hugo unavailable, so the exact-version build is delegated to the existing push-triggered CI | Added Yukari using the name, homepage URL, avatar, and description published on its Friends page. Existing cards, layout, and the F3 next action are unchanged. |
