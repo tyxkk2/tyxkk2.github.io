@@ -1,0 +1,159 @@
+.friends-page {
+    --friend-accent: #2563eb;
+}
+
+[data-theme="dark"] .friends-page {
+    --friend-accent: #60a5fa;
+}
+
+.friends-page .post-description {
+    color: var(--secondary);
+    line-height: 1.6;
+}
+
+.friend-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: 1rem;
+    padding: 0;
+    margin: 2rem 0 3rem;
+    list-style: none;
+}
+
+.friend-list li {
+    min-width: 0;
+}
+
+.friend-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
+    padding: 1.5rem;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.friend-card:hover {
+    border-color: var(--friend-accent);
+    box-shadow: 0 4px 18px color-mix(in srgb, var(--friend-accent) 8%, transparent);
+}
+
+.friend-card:focus-visible,
+.friend-exchange a:focus-visible {
+    outline: 2px solid var(--friend-accent);
+    outline-offset: 4px;
+}
+
+.friend-avatar {
+    flex: 0 0 64px;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--code-bg);
+}
+
+.friend-avatar--placeholder {
+    display: grid;
+    place-items: center;
+    color: var(--friend-accent);
+    font-size: 1.5rem;
+}
+
+.friend-info {
+    display: grid;
+    gap: 0.35rem;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.friend-name {
+    color: var(--primary);
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+.friend-description {
+    color: var(--secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.friend-arrow {
+    flex-shrink: 0;
+    margin-left: auto;
+    color: var(--secondary);
+    font-size: 1.25rem;
+}
+
+.friend-exchange {
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+.friend-exchange .post-content {
+    margin: 0 0 1.5rem;
+    font-size: 1rem;
+}
+
+.friend-exchange .post-content h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.4rem;
+}
+
+.friend-exchange a {
+    color: var(--friend-accent);
+}
+
+.friend-site-info {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+.friend-site-info dt {
+    color: var(--secondary);
+}
+
+.friend-site-info dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.friend-site-info a {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+@media (max-width: 480px) {
+    .friend-card {
+        gap: 0.85rem;
+        padding: 1.1rem;
+    }
+
+    .friend-avatar {
+        flex-basis: 52px;
+        width: 52px;
+        height: 52px;
+    }
+
+    .friend-site-info {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.25rem;
+    }
+
+    .friend-site-info dd + dt {
+        margin-top: 0.75rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .friend-card {
+        transition: none;
+    }
+}

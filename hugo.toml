@@ -87,3 +87,8 @@ theme = 'PaperMod'
   name = "Blog"
   url = "/posts/"
   weight = 30
+
+[[menus.main]]
+  name = "Friends"
+  url = "/friends/"
+  weight = 40

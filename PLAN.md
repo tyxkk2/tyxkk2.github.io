@@ -5,7 +5,7 @@
 | Status | `active` |
 | Current phase | `F3 — Set-wise Retention and Pipeline v2` |
 | Next action | Draft the source-backed SAVEMem/CoRDS/NovaCov comparison matrix in `content/posts/SetWise-Streaming-Memory/index.md`, covering query visibility, memory unit, set objective, budget boundary, and guarantee assumptions, before updating Pipeline v2. |
-| Last updated | 2026-10-08 |
+| Last updated | 2026-10-19 |
 | Baseline observed before plan creation | `e38b12b` on `main` |
 | Research-context cutoff | 2026-09-02 |
 
@@ -35,7 +35,7 @@ maintainable research series that:
 - Do not turn the site into a live paper database or a unified leaderboard.
 - Do not implement or reproduce the research methods in this program.
 - Do not redesign the PaperMod theme or add multilingual Hugo support, except for
-  the user-requested Home/About layout work in S1.
+  the user-requested Home/About layout work in S1 and Friends page in S2.
 - Do not add a new `series` taxonomy during this plan; use the existing tag and a
   curated hub unless a later decision explicitly changes this.
 - Do not promise complete coverage of every streaming-video preprint.
@@ -94,6 +94,7 @@ or project sources even when the research-context report already contains them.
 | Phase | Priority | Status | Depends on | Primary outcome |
 | --- | --- | --- | --- | --- |
 | S1 | P0 | `done` | — | User-requested combined Home/About page and responsive profile sidebar |
+| S2 | P0 | `done` | — | User-requested Friends page, navigation entry, and reusable site details |
 | F0 | P0 | `done` | — | Canonical source ledger and naming/version ground truth |
 | F1 | P0 | `done` | F0 | Development overview and discoverable series hub |
 | F2 | P0 | `done` | F0, F1 | Bounded-memory evolution and expanded ReKV note |
@@ -163,6 +164,43 @@ dimensions and SHA-256 match across environments. Hugo Extended 0.160.1
 production build and 1440px/390px visual checks passed, with the existing
 176px/150px display sizes, zero center offset, no horizontal overflow, and no
 browser warnings or errors. The avatar fix is included in this commit.
+
+## S2 — Friends Page
+
+**Status:** `done`
+
+Add a `/friends/` page inspired by the avatar/name/description cards on
+`https://kujostar.github.io/friends/`, using the existing PaperMod appearance.
+Include NAGISA's Blog as the initial friend and provide site details for link
+exchanges. Preserve the research program and resume F3 after this scoped task.
+
+### Acceptance criteria
+
+- The global navigation exposes Friends on the homepage and other pages.
+- Friend entries are editable in the page's TOML front matter; cards support an
+  avatar, site name, optional description, and external destination.
+- The page supports light/dark themes and desktop/mobile widths without clipping.
+- Site details use the canonical domain, the user's chosen link-exchange
+  name/description, and a stable avatar URL published from the existing asset.
+- `git diff --check`, Hugo Extended `0.160.1` `make build`, and `make dev`
+  desktop/mobile visual and navigation checks pass.
+- Provide the requested Chinese-key JSON site introduction for the user to share.
+
+### Completion note
+
+The validated implementation and approved wording are included in this commit.
+The `/friends/` leaf bundle contains the editable NAGISA entry, rendered by a dedicated template
+with responsive cards and the existing light/dark palette. Home, Blog, and
+Friends navigation passed in the development preview. The link-exchange details
+use dedicated page metadata and publish the original avatar at `/images/avatar.jpg`;
+the generated file's SHA-256 matches the source. The production canonical URL
+and single H1 were checked. Hugo Extended `0.160.1` `make build`,
+`git diff --check`, and `make dev` previews at 1440px and 390px passed, with no
+horizontal overflow or browser warnings/errors. The user's follow-up sets the
+link-exchange name to `tyxkk2`, the description to `叶わぬ 願いごとを`, and the
+contact wording to "send me a message" without an email link. Existing field
+labels stay unchanged, and canonical URLs are shown in previews as well as
+production. Resume the existing F3 action.
 
 ## Global Acceptance Gates
 
@@ -811,6 +849,7 @@ Initial watchlist:
 
 | Date | Decision | Reason | Downstream effect |
 | --- | --- | --- | --- |
+| 2026-10-19 | Add a standalone Friends page with NAGISA's Blog, an English navigation label, and reusable site details. | The user requested a friend-link page based on NAGISA's page and supplied a four-field Chinese JSON format for sharing their own site. | S2 is a scoped layout exception; use the existing avatar resource at a stable URL and return to F3 after validation. |
 | 2026-10-06 | Merge Home and About into a responsive profile-and-biography homepage, retaining the old About URL as an alias. | The user explicitly requested personal information in the left sidebar and About in the main column. | S1 is a scoped exception to the layout non-goal; research phases and existing About prose keep their scope. |
 | 2026-09-02 | Use one root `PLAN.md` as the only active plan and keep stable rules in `AGENTS.md`. | Prevent multiple current plans from drifting while ensuring future agents discover the workflow. | All phases and work logs are maintained here. |
 | 2026-09-02 | Organize work by functional phases rather than weekly deadlines. | Each phase may require many commits and research timing is uncertain. | Progress is dependency- and acceptance-driven. |
@@ -854,3 +893,5 @@ lands.
 | 2026-10-06 | S1 About content | `e414ced` | `git diff --check`; Hugo Extended 0.160.1 `make build` in an isolated working-tree copy; rendered biography, contacts, Misc, headings, and About redirect checks | Updated the approved biography and research description, added the Fall 2027 Ph.D. application statement, and limited Misc to the confirmed November 3–5 Worlds quarterfinals in Allen. Preserved the merged Home/About structure and concurrent alignment edits. |
 | 2026-10-08 | S1 avatar diagnosis | this commit | Source/generated image metadata and visual inspection; live homepage image URL and SHA-256 match; template/CSS audit; `git diff --check`; no runtime changes requiring a build | Original avatar is 940px square, but production previously resized it to 190px with no density variants for the 176px display while development skipped that resize. Density-aware output and matching preview behavior address this high-density-screen softness in the implementation below. |
 | 2026-10-08 | S1 avatar clarity | this commit | `git diff --check`; Hugo Extended 0.160.1 `make build`; production/development HTML, 190/380/570px image dimensions, and matching SHA-256 checks; `make dev` desktop/mobile visual QA at 1440px and 390px; browser console | Added 1x/2x/3x avatar sources at quality 90 and unified development/production processing. Original asset, display size, and centering are preserved; included in this commit for the user-requested push. |
+| 2026-10-19 | S2 | this commit | `git diff --check`; Hugo Extended 0.160.1 `make build`; production canonical/H1/navigation checks; original/published avatar SHA-256 match; `make dev` at 1440px/390px in light/dark themes; Home/Blog/Friends navigation; no browser warnings/errors | Added the Friends page and NAGISA card, global navigation, stable avatar URL, and reusable site details. The user approved committing and pushing the result; F3 remains the research next action. |
+| 2026-10-19 | S2 wording | this commit | `git diff --check`; Hugo Extended 0.160.1 `make build`; existing `make dev` preview at 1440px/390px; rendered field labels and values checked | Changed the invitation to "send me a message" and set the example to the user's chosen name, Japanese description, and canonical URLs. Field labels and global site identity remain unchanged. |
